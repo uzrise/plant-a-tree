@@ -3,7 +3,8 @@
     "home": "Bosh sahifa",
     "about": "Biz haqimizda",
     "contact": "Bog'lanish",
-    "info": "Ma'lumot"
+    "info": "Ma'lumot",
+    "signIn": "Kirish"
   },
   "welcome": {
     "title": "Xush kelibsiz",
@@ -70,9 +71,17 @@
       "firstName": "Ism",
       "lastName": "Familiya",
       "email": "Email",
+      "phone": "Telefon (ixtiyoriy)",
       "message": "Bizga xabar qoldiring...",
       "privacy": "Siz bizning do'stona maxfiylik siyosatimizga rozi bo'lasiz.",
-      "send": "Xabar yuborish"
+      "send": "Xabar yuborish",
+      "sending": "Yuborilmoqda...",
+      "success": "Xabar muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
+      "error": "Xabar yuborishda xatolik. Iltimos, qayta urinib ko'ring.",
+      "privacyRequired": "Iltimos, maxfiylik siyosatini qabul qiling",
+      "nameRequired": "Ism kiritilishi shart",
+      "emailInvalid": "Noto'g'ri email manzil",
+      "messageMin": "Xabar kamida 10 ta belgidan iborat bo'lishi kerak"
     }
   },
   "footer": {
@@ -87,5 +96,183 @@
     "terms": "Shartlar",
     "privacy": "Maxfiylik",
     "cookies": "Kukilar"
+  },
+  "auth": {
+    "login": {
+      "title": "Kirish",
+      "email": "Email",
+      "emailPlaceholder": "Emailingizni kiriting",
+      "password": "Parol",
+      "passwordPlaceholder": "Parolingizni kiriting",
+      "submit": "Kirish",
+      "loading": "Kirilmoqda...",
+      "or": "Yoki",
+      "google": "Google orqali kirish",
+      "noAccount": "Hisobingiz yo'qmi?",
+      "register": "Ro'yxatdan o'tish"
+    },
+    "register": {
+      "title": "Ro'yxatdan o'tish",
+      "email": "Email",
+      "emailPlaceholder": "Emailingizni kiriting",
+      "password": "Parol",
+      "passwordPlaceholder": "Parolingizni kiriting",
+      "confirmPassword": "Parolni tasdiqlash",
+      "confirmPasswordPlaceholder": "Parolingizni qayta kiriting",
+      "submit": "Ro'yxatdan o'tish",
+      "loading": "Ro'yxatdan o'tilmoqda...",
+      "hasAccount": "Allaqachon hisobingiz bormi?",
+      "login": "Kirish"
+    },
+    "verify": {
+      "title": "Emailni tasdiqlash",
+      "description": "Tasdiqlash kodi yuborildi",
+      "otp": "Tasdiqlash kodi",
+      "submit": "Tasdiqlash",
+      "loading": "Tasdiqlanmoqda...",
+      "resend": "Kodni qayta yuborish",
+      "resendCountdown": "{seconds} soniyadan keyin qayta yuborish"
+    },
+    "createProfile": {
+      "title": "Profilni to'ldirish",
+      "description": "Ro'yxatdan o'tishni yakunlash uchun ma'lumotlaringizni kiriting",
+      "name": "Ism",
+      "namePlaceholder": "Ismingizni kiriting",
+      "surname": "Familiya",
+      "surnamePlaceholder": "Familiyangizni kiriting",
+      "phone": "Telefon",
+      "phonePlaceholder": "Telefon raqamingizni kiriting",
+      "submit": "Yakunlash",
+      "loading": "Saqlanmoqda..."
+    }
+  },
+  "profile": {
+    "title": "Mening profilim",
+    "email": "Email",
+    "name": "Ism",
+    "surname": "Familiya",
+    "phone": "Telefon",
+    "role": "Rol",
+    "edit": "Profilni tahrirlash",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "logout": "Chiqish",
+    "loading": "Yuklanmoqda...",
+    "saving": "Saqlanmoqda...",
+    "adminPanel": "Admin panel"
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin panel",
+      "backToProfile": "Profilga qaytish",
+      "users": "Foydalanuvchilar",
+      "manageUsers": "Barcha foydalanuvchilarni boshqarish"
+    },
+    "users": {
+      "title": "Foydalanuvchilarni boshqarish",
+      "back": "Paneldan qaytish",
+      "email": "Email",
+      "name": "Ism",
+      "surname": "Familiya",
+      "phone": "Telefon",
+      "role": "Rol",
+      "status": "Holat",
+      "actions": "Harakatlar",
+      "blocked": "Bloklangan",
+      "verified": "Tasdiqlangan",
+      "unverified": "Tasdiqlanmagan",
+      "block": "Bloklash",
+      "unblock": "Blokni olib tashlash",
+      "view": "Ko'rish",
+      "viewProfile": "Foydalanuvchi profili",
+      "backToUsers": "Foydalanuvchilarga qaytish",
+      "createdAt": "Yaratilgan sana",
+      "blockUser": "Foydalanuvchini bloklash",
+      "unblockUser": "Blokni olib tashlash",
+      "loadError": "Foydalanuvchilarni yuklashda xatolik",
+      "userLoadError": "Foydalanuvchini yuklashda xatolik",
+      "toggleError": "Blok holatini o'zgartirishda xatolik"
+    },
+    "contacts": {
+      "title": "Bog'lanish xabarlari",
+      "backToDashboard": "Paneldan qaytish",
+      "unreadCount": "{count} ta o'qilmagan xabar",
+      "unreadCountPlural": "{count} ta o'qilmagan xabarlar",
+      "noMessages": "Hozircha xabar yo'q",
+      "email": "Email",
+      "phone": "Telefon",
+      "date": "Sana",
+      "registeredUser": "Ro'yxatdan o'tgan foydalanuvchi",
+      "viewProfile": "Profildan ko'rish →",
+      "markAsRead": "O'qilgan deb belgilash",
+      "new": "Yangi",
+      "loadError": "Xabarlarni yuklashda xatolik",
+      "manageContacts": "Bog'lanish xabarlarini ko'rish va boshqarish"
+    },
+    "donations": {
+      "title": "Xayr-ehsonlar",
+      "backToDashboard": "Paneldan qaytish",
+      "noDonations": "Hozircha xayr-ehson yo'q",
+      "user": "Foydalanuvchi",
+      "amount": "Summa",
+      "treeCount": "Daraxtlar",
+      "anonymous": "Anonim",
+      "date": "Sana",
+      "totalAmount": "Jami summa",
+      "donationCount": "Xayr-ehsonlar soni",
+      "viewProfile": "Profildan ko'rish →",
+      "manageDonations": "Barcha xayr-ehsonlarni ko'rish va boshqarish",
+      "loadError": "Xayr-ehsonlarni yuklashda xatolik",
+      "no": "Yo'q",
+      "total": "Jami",
+      "totalTrees": "Jami daraxtlar",
+      "times": "marta",
+      "lastDonation": "Oxirgi xayr-ehson",
+      "lastDate": "Oxirgi sana"
+    }
+  },
+  "errors": {
+    "loginFailed": "Kirishda xatolik",
+    "registrationFailed": "Ro'yxatdan o'tishda xatolik",
+    "verificationFailed": "Tasdiqlashda xatolik",
+    "resendFailed": "OTP qayta yuborishda xatolik",
+    "updateProfileFailed": "Profilni yangilashda xatolik",
+    "loadProfileFailed": "Profildan yuklashda xatolik",
+    "generic": "Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+    "userExists": "Foydalanuvchi allaqachon mavjud",
+    "userNotFound": "Foydalanuvchi topilmadi",
+    "userAlreadyVerified": "Foydalanuvchi allaqachon tasdiqlangan",
+    "otpNotFound": "OTP topilmadi yoki muddati tugagan",
+    "invalidOtp": "Noto'g'ri OTP kodi",
+    "otpExpired": "OTP muddati tugagan",
+    "verifyEmailFirst": "Iltimos, avval emailingizni tasdiqlang",
+    "accountBlocked": "Hisob bloklangan",
+    "useGoogleLogin": "Iltimos, Google orqali kiring",
+    "invalidCredentials": "Noto'g'ri ma'lumotlar",
+    "waitBeforeResend": "Iltimos, yangi OTP so'rashdan oldin {seconds} soniya kuting",
+    "invalidTreeCount": "Noto'g'ri daraxtlar soni"
+  },
+  "validation": {
+    "emailInvalid": "Noto'g'ri email manzil",
+    "passwordMin": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+    "nameRequired": "Ism kiritilishi shart",
+    "surnameRequired": "Familiya kiritilishi shart",
+    "phoneRequired": "Telefon kiritilishi shart",
+    "passwordsDontMatch": "Parollar mos kelmaydi"
+  },
+  "donation": {
+    "title": "Xayr-ehson qilish",
+    "amount": "Summa (UZS)",
+    "amountHint": "{treeCount} ta daraxt asosida. Asosiy: {baseAmount} UZS. Summani o'zgartirishingiz mumkin.",
+    "amountError": "Summa 12,000 va 100,000,000 UZS oralig'ida bo'lishi kerak",
+    "anonymous": "Anonim xayr-ehson qilish",
+    "cancel": "Bekor qilish",
+    "donate": "Xayr-ehson qilish",
+    "processing": "Jarayonda...",
+    "success": "Xayr-ehsoningiz uchun rahmat!"
+  },
+  "contributors": {
+    "title": "Bizning homiylarimiz",
+    "subtitle": "Farq qilayotgan odamlarni taniqing"
   }
 }

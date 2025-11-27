@@ -2,9 +2,33 @@
 import Image from "next/image";
 import Tree from "./tree";
 import { useTranslations } from "next-intl";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { usersAPI, donationsAPI, authAPI } from "../../lib/api";
+import DonationModal from "./donation-modal";
 
 export default function HeroController({ treeCount, setTreeCount }) {
   const t = useTranslations("welcome");
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [hasProfile, setHasProfile] = useState(false);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    try {
+      await authAPI.refresh();
+      setIsAuthenticated(true);
+      const response = await usersAPI.getMe();
+      setHasProfile(!!(response.data.name && response.data.surname));
+    } catch (err) {
+      setIsAuthenticated(false);
+      setHasProfile(false);
+    }
+  };
 
   function onClick() {
     if (treeCount < 10) {
@@ -14,6 +38,21 @@ export default function HeroController({ treeCount, setTreeCount }) {
 
   const handleSliderChange = (e) => {
     setTreeCount(e.target.value);
+  };
+
+  const handleSaveWorld = async () => {
+    if (!isAuthenticated) {
+      router.push('/auth/register');
+      return;
+    }
+
+    if (!hasProfile) {
+      router.push('/auth/register');
+      return;
+    }
+
+    // Show donation modal
+    setShowModal(true);
   };
 
   return (
@@ -76,10 +115,10 @@ export default function HeroController({ treeCount, setTreeCount }) {
             <span className="font-semibold text-2xl sm:text-[26px] md:text-[28px] lg:text-[32px] leading-8 sm:leading-9 md:leading-10 text-[#BCBEC2]">
               =
             </span>
-            <div>${treeCount * 10}</div>
+            <div>{treeCount * 12000} UZS</div>
           </div>
           <button
-            onClick={onClick}
+            onClick={handleSaveWorld}
             className="rounded-[15px_15px_13px_13px] h-[56px] sm:h-[60px] md:h-[64px] lg:h-[68px] w-full sm:w-[140px] md:w-[150px] lg:w-[165px] text-white active:text-[#ffffffcc] active:p-[1px] p-[1px_2px_5px_2px] bg-[#08743E] border-2 border-white shadow-[0px_1px_1px_0px_#00000040]"
           >
             <div className="flex items-center justify-center font-bold text-sm sm:text-base bg-[#37A16C] border-t border-b rounded-xl border-[#36BD79] w-full px-4 sm:px-5 py-3 sm:py-4 h-full">
@@ -88,6 +127,16 @@ export default function HeroController({ treeCount, setTreeCount }) {
           </button>
         </div>
       </div>
+      {showModal && (
+        <DonationModal
+          treeCount={treeCount}
+          onClose={() => setShowModal(false)}
+          onSuccess={() => {
+            setShowModal(false);
+            setTreeCount(1);
+          }}
+        />
+      )}
     </div>
   );
 }

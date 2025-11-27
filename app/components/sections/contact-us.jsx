@@ -1,14 +1,76 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslations } from "next-intl";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { contactsAPI, authAPI } from "../../../lib/api";
+import { translateBackendError } from "../../../lib/errorTranslations";
 
 function ContactUs() {
   const t = useTranslations("contact");
+  const errorT = useTranslations("errors");
   const [checked, setChecked] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const contactSchema = useMemo(
+    () =>
+      z.object({
+        name: z.string().min(1, t("form.nameRequired")),
+        email: z.string().email(t("form.emailInvalid")),
+        phone: z.string().optional(),
+        message: z.string().min(10, t("form.messageMin")),
+      }),
+    [t]
+  );
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(contactSchema),
+  });
+
+  useEffect(() => {
+    authAPI
+      .refresh()
+      .then(() => setIsAuthenticated(true))
+      .catch(() => setIsAuthenticated(false));
+  }, []);
 
   const handleCheckboxChange = () => {
     setChecked(!checked);
+  };
+
+  const onSubmit = async (data) => {
+    if (!checked) {
+      setError(t("form.privacyRequired"));
+      return;
+    }
+    setError("");
+    setSuccess("");
+    setLoading(true);
+    try {
+      if (isAuthenticated) {
+        await contactsAPI.createAuthenticated(data);
+      } else {
+        await contactsAPI.create(data);
+      }
+      setSuccess(t("form.success"));
+      reset();
+      setChecked(false);
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || t("form.error");
+      setError(translateBackendError(errorMsg, errorT));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -245,50 +307,86 @@ function ContactUs() {
           </div>
         </div>
         <div className="bg-[#F5F6F7] py-6 sm:py-8 md:py-10 lg:py-[40px] px-4 sm:px-6 md:px-8 lg:px-[32px] max-w-full lg:max-w-[576px] w-full rounded-[24px]">
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-[32px]">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {error && (
+              <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm">
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded text-sm">
+                {success}
+              </div>
+            )}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-[32px]">
+              <div className="flex-1">
+                <input
+                  type="text"
+                  {...register("name", { required: true })}
+                  placeholder={t("form.firstName")}
+                  className={`placeholder:text-[#BCBEC2] h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid text-sm sm:text-base ${
+                    errors.name ? "border-red-500" : "border-[#EEEEEE]"
+                  }`}
+                />
+                {errors.name && (
+                  <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>
+                )}
+              </div>
+            </div>
             <input
-              type="text"
-              placeholder={t("form.firstName")}
-              className="placeholder:text-[#BCBEC2] h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
+              type="email"
+              {...register("email", { required: true })}
+              placeholder={t("form.email")}
+              className={`placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid text-sm sm:text-base ${
+                errors.email ? "border-red-500" : "border-[#EEEEEE]"
+              }`}
             />
+            {errors.email && (
+              <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
+            )}
             <input
-              type="text"
-              placeholder={t("form.lastName")}
-              className="placeholder:text-[#BCBEC2] h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
+              type="tel"
+              {...register("phone")}
+              placeholder={t("form.phone")}
+              className="placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
             />
-          </div>
-          <input
-            type="email"
-            placeholder={t("form.email")}
-            className="placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
-          />
-          <textarea
-            type="text"
-            placeholder={t("form.message")}
-            className="placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 mb-6 sm:mb-7 md:mb-8 min-h-[120px] sm:h-[140px] md:h-[164px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base resize-none"
-          />
-          <div className="flex gap-3 items-start sm:items-center">
-            <input
-              type="checkbox"
-              id="custom-checkbox"
-              checked={checked}
-              onChange={handleCheckboxChange}
-              className="hidden"
+            <textarea
+              {...register("message", { required: true })}
+              placeholder={t("form.message")}
+              className={`placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 mb-6 sm:mb-7 md:mb-8 min-h-[120px] sm:h-[140px] md:h-[164px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid text-sm sm:text-base resize-none ${
+                errors.message ? "border-red-500" : "border-[#EEEEEE]"
+              }`}
             />
-            <label
-              htmlFor="custom-checkbox"
-              className={`size-5 flex-shrink-0 border bg-white rounded-md flex items-center justify-center cursor-pointer mt-0.5
+            {errors.message && (
+              <p className="mt-1 text-xs text-red-600 -mt-4 mb-4">{errors.message.message}</p>
+            )}
+            <div className="flex gap-3 items-start sm:items-center">
+              <input
+                type="checkbox"
+                id="custom-checkbox"
+                checked={checked}
+                onChange={handleCheckboxChange}
+                className="hidden"
+              />
+              <label
+                htmlFor="custom-checkbox"
+                className={`size-5 flex-shrink-0 border bg-white rounded-md flex items-center justify-center cursor-pointer mt-0.5
           ${checked ? "border-[#37A16C]" : "border-[#EEEEEE]"}`}
+              >
+                {checked && <span className="text-green-500 text-sm">✓</span>}
+              </label>
+              <p className="text-[#787F84] text-xs sm:text-sm md:text-base font-medium leading-relaxed">
+                {t("form.privacy")}
+              </p>
+            </div>
+            <button
+              type="submit"
+              disabled={loading || !checked}
+              className="mt-6 sm:mt-8 md:mt-[32px] font-semibold w-full text-xs sm:text-sm rounded-[48px] text-white p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] bg-[#37A16C] border-[#36BD79] border disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {checked && <span className="text-green-500 text-sm">✓</span>}
-            </label>
-            <p className="text-[#787F84] text-xs sm:text-sm md:text-base font-medium leading-relaxed">
-              {t("form.privacy")}
-            </p>
-          </div>
-          <button className="mt-6 sm:mt-8 md:mt-[32px] font-semibold w-full text-xs sm:text-sm rounded-[48px] text-white p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] bg-[#37A16C] border-[#36BD79] border">
-            {t("form.send")}
-          </button>
+              {loading ? t("form.sending") : t("form.send")}
+            </button>
+          </form>
         </div>
       </div>
     </section>

@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "info": "Info"
+    "info": "Info",
+    "signIn": "Sign In"
   },
   "welcome": {
     "title": "Welcome",
@@ -70,9 +71,17 @@
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
+      "phone": "Phone (optional)",
       "message": "Leave us a message...",
       "privacy": "You agree to our friendly privacy policy.",
-      "send": "Send message"
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We will contact you soon.",
+      "error": "Failed to send message. Please try again.",
+      "privacyRequired": "Please accept the privacy policy",
+      "nameRequired": "Name is required",
+      "emailInvalid": "Invalid email address",
+      "messageMin": "Message must be at least 10 characters"
     }
   },
   "footer": {
@@ -87,5 +96,183 @@
     "terms": "Terms",
     "privacy": "Privacy",
     "cookies": "Cookies"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "submit": "Login",
+      "loading": "Logging in...",
+      "or": "Or continue with",
+      "google": "Continue with Google",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+    "register": {
+      "title": "Register",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "submit": "Register",
+      "loading": "Registering...",
+      "hasAccount": "Already have an account?",
+      "login": "Login"
+    },
+    "verify": {
+      "title": "Verify Email",
+      "description": "We sent a verification code to",
+      "otp": "Verification Code",
+      "submit": "Verify",
+      "loading": "Verifying...",
+      "resend": "Resend code",
+      "resendCountdown": "Resend in {seconds} seconds"
+    },
+    "createProfile": {
+      "title": "Complete Your Profile",
+      "description": "Please provide your information to complete registration",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "surname": "Surname",
+      "surnamePlaceholder": "Enter your surname",
+      "phone": "Phone",
+      "phonePlaceholder": "Enter your phone number",
+      "submit": "Complete",
+      "loading": "Saving..."
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "email": "Email",
+    "name": "Name",
+    "surname": "Surname",
+    "phone": "Phone",
+    "role": "Role",
+    "edit": "Edit Profile",
+    "save": "Save",
+    "cancel": "Cancel",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "adminPanel": "Admin Panel"
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "backToProfile": "Back to Profile",
+      "users": "Users",
+      "manageUsers": "Manage all users"
+    },
+    "users": {
+      "title": "User Management",
+      "back": "Back to Dashboard",
+      "email": "Email",
+      "name": "Name",
+      "surname": "Surname",
+      "phone": "Phone",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions",
+      "blocked": "Blocked",
+      "verified": "Verified",
+      "unverified": "Unverified",
+      "block": "Block",
+      "unblock": "Unblock",
+      "view": "View",
+      "viewProfile": "User Profile",
+      "backToUsers": "Back to Users",
+      "createdAt": "Created At",
+      "blockUser": "Block User",
+      "unblockUser": "Unblock User",
+      "loadError": "Failed to load users",
+      "userLoadError": "Failed to load user",
+      "toggleError": "Failed to toggle block status"
+    },
+    "contacts": {
+      "title": "Contact Messages",
+      "backToDashboard": "Back to Dashboard",
+      "unreadCount": "{count} unread message",
+      "unreadCountPlural": "{count} unread messages",
+      "noMessages": "No contact messages yet",
+      "email": "Email",
+      "phone": "Phone",
+      "date": "Date",
+      "registeredUser": "Registered User",
+      "viewProfile": "View Profile →",
+      "markAsRead": "Mark as Read",
+      "new": "New",
+      "loadError": "Failed to load contacts",
+      "manageContacts": "View and manage contact messages"
+    },
+    "donations": {
+      "title": "Donations",
+      "backToDashboard": "Back to Dashboard",
+      "noDonations": "No donations yet",
+      "user": "User",
+      "amount": "Amount",
+      "treeCount": "Trees",
+      "anonymous": "Anonymous",
+      "date": "Date",
+      "totalAmount": "Total Amount",
+      "donationCount": "Donation Count",
+      "viewProfile": "View Profile →",
+      "manageDonations": "View and manage all donations",
+      "loadError": "Failed to load donations",
+      "no": "No",
+      "total": "Total",
+      "totalTrees": "Total Trees",
+      "times": "times",
+      "lastDonation": "Last donation",
+      "lastDate": "Last date"
+    }
+  },
+  "errors": {
+    "loginFailed": "Login failed",
+    "registrationFailed": "Registration failed",
+    "verificationFailed": "Verification failed",
+    "resendFailed": "Failed to resend OTP",
+    "updateProfileFailed": "Failed to update profile",
+    "loadProfileFailed": "Failed to load profile",
+    "generic": "An error occurred. Please try again.",
+    "userExists": "User already exists",
+    "userNotFound": "User not found",
+    "userAlreadyVerified": "User already verified",
+    "otpNotFound": "OTP not found or expired",
+    "invalidOtp": "Invalid OTP code",
+    "otpExpired": "OTP expired",
+    "verifyEmailFirst": "Please verify your email first",
+    "accountBlocked": "Account is blocked",
+    "useGoogleLogin": "Please use Google login",
+    "invalidCredentials": "Invalid credentials",
+    "waitBeforeResend": "Please wait {seconds} seconds before requesting a new OTP",
+    "invalidTreeCount": "Invalid tree count"
+  },
+  "validation": {
+    "emailInvalid": "Invalid email address",
+    "passwordMin": "Password must be at least 6 characters",
+    "nameRequired": "Name is required",
+    "surnameRequired": "Surname is required",
+    "phoneRequired": "Phone is required",
+    "passwordsDontMatch": "Passwords don't match"
+  },
+  "donation": {
+    "title": "Make a Donation",
+    "amount": "Amount (UZS)",
+    "amountHint": "Based on {treeCount} tree(s). Default: {baseAmount} UZS. You can adjust the amount.",
+    "amountError": "Amount must be between 12,000 and 100,000,000 UZS",
+    "anonymous": "Donate anonymously",
+    "cancel": "Cancel",
+    "donate": "Donate",
+    "processing": "Processing...",
+    "success": "Thank you for your donation!"
+  },
+  "contributors": {
+    "title": "Our contributors",
+    "subtitle": "Meet the people making a difference"
   }
 }

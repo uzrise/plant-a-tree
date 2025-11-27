@@ -10,6 +10,7 @@ import Mission from "../components/sections/mission";
 import Pledge2 from "../components/sections/pledge-2";
 import Gallery from "../components/sections/gallery";
 import Plant from "../components/sections/plant";
+import Contributors from "../components/sections/contributors";
 import ContactUs from "../components/sections/contact-us";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
       <Pledge2 />
       <Gallery />
       <Plant />
+      <Contributors />
       <ContactUs />
     </main>
   );
