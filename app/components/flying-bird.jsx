@@ -7,10 +7,9 @@ const FlyingBird = ({ size = 42 }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsWingUp((prev) => !prev); // Qanot holatini almashtirish
-    }, 300); // Har 300 millisekundda almashadi
-
-    return () => clearInterval(interval); // Intervalni tozalash
+      setIsWingUp((prev) => !prev);
+    }, 300); 
+    return () => clearInterval(interval);
   }, []);
 
   return (

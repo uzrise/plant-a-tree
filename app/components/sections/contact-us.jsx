@@ -12,14 +12,14 @@ function ContactUs() {
   };
 
   return (
-    <section className="py-[96px] w-full">
-      <h1 className="text-[#202225] font-semibold text-5xl text-center">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
+      <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
         {t("title")}
       </h1>
-      <div className="container items-center mx-auto flex gap-[64px] px-[32px] mt-[64px]">
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-wrap gap-x-[32px] gap-y-[32px] mt-[52px]">
-            <div className="max-w-[272px] w-full">
+      <div className="container items-start mx-auto flex flex-col-reverse lg:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-[64px] px-4 sm:px-6 md:px-8 lg:px-[32px] mt-8 sm:mt-12 md:mt-16 lg:mt-[64px]">
+        <div className="flex flex-col gap-8 sm:gap-10 md:gap-12 w-full lg:w-auto lg:flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-[32px] mt-6 sm:mt-8 md:mt-12 lg:mt-[52px]">
+            <div className="w-full max-w-full sm:max-w-[272px]">
               <svg
                 width="24"
                 height="24"
@@ -34,20 +34,20 @@ function ContactUs() {
                   fill="#37A16C"
                 />
               </svg>
-              <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
+              <h3 className="mt-3 sm:mt-4 text-[#202225] font-semibold text-lg sm:text-xl md:text-[22px]">
                 {t("email.label")}
               </h3>
-              <p className="text-[#787F84] font-medium text-base">
+              <p className="text-[#787F84] font-medium text-sm sm:text-base">
                 {t("email.description")}
               </p>
               <a
                 href="mailto:hi@plantatreeten.com"
-                className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
+                className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-all"
               >
                 {t("email.value")}
               </a>
             </div>
-            <div className="max-w-[272px] w-full">
+            <div className="w-full max-w-full sm:max-w-[272px]">
               <svg
                 width="24"
                 height="24"
@@ -63,20 +63,20 @@ function ContactUs() {
                 />
               </svg>
 
-              <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
+              <h3 className="mt-3 sm:mt-4 text-[#202225] font-semibold text-lg sm:text-xl md:text-[22px]">
                 {t("team.label")}
               </h3>
-              <p className="text-[#787F84] font-medium text-base">
+              <p className="text-[#787F84] font-medium text-sm sm:text-base">
                 {t("team.description")}
               </p>
               <a
                 // href="mailto:hi@plantatreeten.com"
-                className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
+                className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-words"
               >
                 {t("team.value")}
               </a>
-            </div>{" "}
-            <div className="max-w-[272px] w-full">
+            </div>
+            <div className="w-full max-w-full sm:max-w-[272px]">
               <svg
                 width="24"
                 height="24"
@@ -92,20 +92,20 @@ function ContactUs() {
                 />
               </svg>
 
-              <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
+              <h3 className="mt-3 sm:mt-4 text-[#202225] font-semibold text-lg sm:text-xl md:text-[22px]">
                 {t("office.label")}
               </h3>
-              <p className="text-[#787F84] font-medium text-base">
+              <p className="text-[#787F84] font-medium text-sm sm:text-base">
                 {t("office.description")}
               </p>
               <a
                 // href="mailto:hi@plantatreeten.com"
-                className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
+                className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-words"
               >
                 {t("office.value")}
               </a>
-            </div>{" "}
-            <div className="max-w-[272px] w-full">
+            </div>
+            <div className="w-full max-w-full sm:max-w-[272px]">
               <svg
                 width="24"
                 height="24"
@@ -119,27 +119,28 @@ function ContactUs() {
                 />
               </svg>
 
-              <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
+              <h3 className="mt-3 sm:mt-4 text-[#202225] font-semibold text-lg sm:text-xl md:text-[22px]">
                 {t("phone.label")}
               </h3>
-              <p className="text-[#787F84] font-medium text-base">
+              <p className="text-[#787F84] font-medium text-sm sm:text-base">
                 {t("phone.description")}
               </p>
               <a
                 href="tel:+1(000)000-00-00"
-                className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
+                className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold"
               >
                 {t("phone.value")}
               </a>
             </div>
           </div>
-          <div className=" flex gap-6">
+          <div className="flex flex-wrap gap-4 sm:gap-5 md:gap-6 justify-center sm:justify-start">
             <svg
               width="56"
               height="56"
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -155,6 +156,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -170,6 +172,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -183,6 +186,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -198,6 +202,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -213,6 +218,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -228,6 +234,7 @@ function ContactUs() {
               viewBox="0 0 56 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-[56px] md:h-[56px]"
             >
               <rect width="56" height="56" rx="28" fill="#37A16C" />
               <path
@@ -237,30 +244,30 @@ function ContactUs() {
             </svg>
           </div>
         </div>
-        <div className="bg-[#F5F6F7] py-[40px] px-[32px] max-w-[576px] w-full max-h-[536px] h-full rounded-[24px]">
-          <div className="flex gap-[32px]">
+        <div className="bg-[#F5F6F7] py-6 sm:py-8 md:py-10 lg:py-[40px] px-4 sm:px-6 md:px-8 lg:px-[32px] max-w-full lg:max-w-[576px] w-full rounded-[24px]">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-[32px]">
             <input
               type="text"
               placeholder={t("form.firstName")}
-              className="placeholder:text-[#BCBEC2] h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
+              className="placeholder:text-[#BCBEC2] h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
             />
             <input
               type="text"
               placeholder={t("form.lastName")}
-              className="placeholder:text-[#BCBEC2] h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
+              className="placeholder:text-[#BCBEC2] h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
             />
           </div>
           <input
             type="email"
             placeholder={t("form.email")}
-            className="placeholder:text-[#BCBEC2] mt-6 h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
+            className="placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 h-[48px] sm:h-[50px] md:h-[52px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base"
           />
           <textarea
             type="text"
             placeholder={t("form.message")}
-            className="placeholder:text-[#BCBEC2] mt-6 mb-8 h-[164px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
+            className="placeholder:text-[#BCBEC2] mt-4 sm:mt-5 md:mt-6 mb-6 sm:mb-7 md:mb-8 min-h-[120px] sm:h-[140px] md:h-[164px] py-3 sm:py-4 md:py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE] text-sm sm:text-base resize-none"
           />
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-start sm:items-center">
             <input
               type="checkbox"
               id="custom-checkbox"
@@ -270,16 +277,16 @@ function ContactUs() {
             />
             <label
               htmlFor="custom-checkbox"
-              className={`size-5 inline-block border bg-white rounded-md flex items-center justify-center cursor-pointer 
+              className={`size-5 flex-shrink-0 border bg-white rounded-md flex items-center justify-center cursor-pointer mt-0.5
           ${checked ? "border-[#37A16C]" : "border-[#EEEEEE]"}`}
             >
               {checked && <span className="text-green-500 text-sm">✓</span>}
             </label>
-            <p className="text-[#787F84] text-base font-medium">
+            <p className="text-[#787F84] text-xs sm:text-sm md:text-base font-medium leading-relaxed">
               {t("form.privacy")}
             </p>
           </div>
-          <button className="mt-[32px] font-semibold w-full text-sm rounded-[48px] text-white p-[12px_24px_12px_24px] bg-[#37A16C] border-[#36BD79] border">
+          <button className="mt-6 sm:mt-8 md:mt-[32px] font-semibold w-full text-xs sm:text-sm rounded-[48px] text-white p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] bg-[#37A16C] border-[#36BD79] border">
             {t("form.send")}
           </button>
         </div>

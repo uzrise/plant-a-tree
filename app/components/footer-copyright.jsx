@@ -6,11 +6,11 @@ export default function FooterCopyright() {
   const t = useTranslations("footer");
   return (
     <>
-      <p>{t("copyright")}</p>
-      <div className="flex gap-4">
-        <p>{t("terms")}</p>
-        <p>{t("privacy")}</p>
-        <p>{t("cookies")}</p>
+      <p className="text-xs sm:text-sm md:text-base text-center sm:text-left">{t("copyright")}</p>
+      <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4">
+        <p className="text-xs sm:text-sm md:text-base">{t("terms")}</p>
+        <p className="text-xs sm:text-sm md:text-base">{t("privacy")}</p>
+        <p className="text-xs sm:text-sm md:text-base">{t("cookies")}</p>
       </div>
     </>
   );

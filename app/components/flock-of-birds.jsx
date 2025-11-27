@@ -8,14 +8,14 @@ const FlockOfBirds = () => {
   useEffect(() => {
     const createFlock = () => {
       const newBirds = Array.from({ length: 7 }).map((_, index) => {
-        const sizeFactor = 1 + index * 0.3; // Larger birds at the back
+        const sizeFactor = 1 + index * 0.3; 
         return {
           id: index,
-          startX: -100 + index * 5, // Birds move slightly to the right for each row
-          startY: 40 + index * 3, // Birds are positioned lower as you go right
-          delay: index * 0.5, // Delay between each bird's flight
-          duration: 10, // Flying time for each bird
-          size: sizeFactor, // Birds vary in size
+          startX: -100 + index * 5,
+          startY: 40 + index * 3, 
+          delay: index * 0.5,
+          duration: 10,
+          size: sizeFactor, 
         };
       });
       setBirds(newBirds);
@@ -25,7 +25,7 @@ const FlockOfBirds = () => {
   }, []);
 
   return (
-    <div className="absolute top-0 h-[92px] w-full overflow-hidden bg-transparent z-10">
+    <div className="absolute top-0 h-[92px] w-full overflow-hidden bg-transparent z-10 pointer-events-none">
       <div
         className="absolute animate-flyStraight"
         style={{

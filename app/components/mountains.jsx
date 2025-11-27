@@ -80,13 +80,15 @@ function Mountains({ treeCount }) {
   };
 
   return (
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-fit">
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1184px] h-auto">
       <svg
         width="1184"
         height="512"
         viewBox="0 0 1184 512"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-auto"
+        preserveAspectRatio="xMidYMin meet"
       >
         <g clipPath="url(#clip0_150_9182)">
           <mask

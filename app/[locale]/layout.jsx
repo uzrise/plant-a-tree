@@ -46,25 +46,26 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale} className={poppins.variable}>
       <body
-        className={`antialiased bg-[url('/images/home.png')] bg-no-repeat h-screen bg-cover`}
+        className={`antialiased bg-[url('/images/home.png')] bg-no-repeat min-h-screen bg-cover bg-center lg:bg-fixed`}
       >
         <NextIntlClientProvider messages={messages}>
-          <header className="mx-10 py-7 h-[96px] flex justify-between items-center border-b-2 border-b-[#EEEEEE]">
+          <header className="mx-4 sm:mx-6 md:mx-8 lg:mx-10 py-4 sm:py-5 md:py-6 lg:py-7 min-h-[80px] sm:h-[88px] md:h-[96px] flex sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 border-b-2 border-b-[#EEEEEE]">
             <Logo />
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 w-full sm:w-auto justify-end">
               <LanguageSelector />
               <NavInfoButton />
             </div>
           </header>
           {children}
-          <footer className="h-[336px] bg-[#08743E] text-[#FCFDFE] pt-[64px] pb-[48px]">
-            <div className="flex flex-col justify-center gap-[32px] items-center">
+          <footer className="min-h-auto sm:h-auto md:h-[336px] bg-[#08743E] text-[#FCFDFE] pt-8 sm:pt-12 md:pt-16 lg:pt-[64px] pb-6 sm:pb-8 md:pb-12 lg:pb-[48px]">
+            <div className="flex flex-col justify-center gap-6 sm:gap-8 md:gap-[32px] items-center px-4 sm:px-6 md:px-8">
               <svg
                 width="140"
                 height="40"
                 viewBox="0 0 140 40"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="w-[120px] sm:w-[130px] md:w-[140px] h-auto"
               >
                 <path
                   d="M0.507153 20.264C0.507195 20.2637 0.506616 20.2634 0.504707 20.2622H0.505057L1.59357 20.4854C3.81179 20.8924 5.98619 21.5036 8.11212 22.3303C8.42581 22.4522 8.73462 22.5912 9.04259 22.7372C10.1282 23.2512 11.1554 23.9354 12.2167 24.6583C12.5371 24.8766 13.5231 25.7223 15.0893 27.3381C15.7304 27.9997 17.5124 30.2043 20.4859 33.9116C21.0634 34.6317 21.6657 35.289 22.2774 35.8909C22.7938 36.3994 23.274 36.8126 23.6883 37.161L23.6887 37.1607C24.3975 37.7561 24.9588 38.0988 25.3264 38.2881C25.41 38.3311 25.494 38.375 25.5785 38.4193C25.9604 38.6191 26.3547 38.8254 26.7908 38.9856C25.0051 39.5817 23.1076 39.9607 21.1365 39.997C20.8207 40.0026 20.6317 39.9825 20.424 39.9605C20.3642 39.9541 20.3029 39.9476 20.2365 39.9415C19.9218 39.9125 19.6311 39.8869 19.3579 39.8629C17.3918 39.6901 16.3383 39.5975 13.8286 38.8772C13.8287 38.8773 13.8287 38.8773 13.8288 38.8774C13.8283 38.8772 13.8278 38.877 13.8273 38.8768C13.8245 38.876 13.8216 38.8752 13.8188 38.8744C13.7114 38.8436 13.5989 38.8024 13.4816 38.7513C6.70853 36.2208 1.67844 30.1175 0.683808 22.7348C0.58998 22.039 0.531915 21.3315 0.511941 20.6147C0.511591 20.6139 0.511242 20.613 0.510892 20.6122L0.505057 20.2689C0.504829 20.2645 0.507075 20.2644 0.507153 20.264Z"
@@ -97,7 +98,7 @@ export default async function LocaleLayout({ children, params }) {
               </svg>
               <FooterLinks />
             </div>
-            <div className="container mx-auto mt-[64px] border-t flex justify-between border-[#37A16C] pt-[32px] px-[32px]">
+            <div className="container mx-auto mt-6 sm:mt-8 md:mt-12 lg:mt-[64px] border-t flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 border-[#37A16C] pt-6 sm:pt-8 md:pt-[32px] px-4 sm:px-6 md:px-8 lg:px-[32px]">
               <FooterCopyright />
             </div>
           </footer>

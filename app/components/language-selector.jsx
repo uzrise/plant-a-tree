@@ -36,12 +36,12 @@ export default function LanguageSelector() {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-1 sm:gap-2 items-center">
       {languages.map((lang) => (
         <button
           key={lang.code}
           onClick={() => switchLanguage(lang.code)}
-          className={`px-3 py-1 rounded-[48px] text-sm font-semibold transition-colors ${
+          className={`px-2 py-1 sm:px-3 sm:py-1 rounded-[48px] text-xs sm:text-sm font-semibold transition-colors ${
             locale === lang.code
               ? "bg-[#37A16C] text-white border border-[#36BD79]"
               : "bg-[#EEEEEE] text-[#202225] border border-[#FFFFFF] hover:bg-[#E0E0E0]"
