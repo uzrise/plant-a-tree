@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 function ContactUs() {
+  const t = useTranslations("contact");
   const [checked, setChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -12,7 +14,7 @@ function ContactUs() {
   return (
     <section className="py-[96px] w-full">
       <h1 className="text-[#202225] font-semibold text-5xl text-center">
-        Contact us{" "}
+        {t("title")}
       </h1>
       <div className="container items-center mx-auto flex gap-[64px] px-[32px] mt-[64px]">
         <div className="flex flex-col gap-12">
@@ -33,16 +35,16 @@ function ContactUs() {
                 />
               </svg>
               <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
-                Email
+                {t("email.label")}
               </h3>
               <p className="text-[#787F84] font-medium text-base">
-                Our friendly team is here to help.
+                {t("email.description")}
               </p>
               <a
                 href="mailto:hi@plantatreeten.com"
                 className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
               >
-                hi@plantatreeten.com
+                {t("email.value")}
               </a>
             </div>
             <div className="max-w-[272px] w-full">
@@ -62,16 +64,16 @@ function ContactUs() {
               </svg>
 
               <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
-                Our team
+                {t("team.label")}
               </h3>
               <p className="text-[#787F84] font-medium text-base">
-                Our friendly team is here to help.
+                {t("team.description")}
               </p>
               <a
                 // href="mailto:hi@plantatreeten.com"
                 className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
               >
-                Plantatree Nonprofit Ltd.
+                {t("team.value")}
               </a>
             </div>{" "}
             <div className="max-w-[272px] w-full">
@@ -91,16 +93,16 @@ function ContactUs() {
               </svg>
 
               <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
-                Office
+                {t("office.label")}
               </h3>
               <p className="text-[#787F84] font-medium text-base">
-                Come say hello at our office HQ.{" "}
+                {t("office.description")}
               </p>
               <a
                 // href="mailto:hi@plantatreeten.com"
                 className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
               >
-                Tashkent, Uzbekistan{" "}
+                {t("office.value")}
               </a>
             </div>{" "}
             <div className="max-w-[272px] w-full">
@@ -118,16 +120,16 @@ function ContactUs() {
               </svg>
 
               <h3 className="mt-4 text-[#202225] font-semibold text-[22px]">
-                Phone
+                {t("phone.label")}
               </h3>
               <p className="text-[#787F84] font-medium text-base">
-                Mon-Fri from 8am to 5pm.{" "}
+                {t("phone.description")}
               </p>
               <a
                 href="tel:+1(000)000-00-00"
                 className="mt-4 text-[#37A16C] inline-block text-sm font-semibold"
               >
-                +1 (000) 000-00-00{" "}
+                {t("phone.value")}
               </a>
             </div>
           </div>
@@ -239,23 +241,23 @@ function ContactUs() {
           <div className="flex gap-[32px]">
             <input
               type="text"
-              placeholder="First name"
+              placeholder={t("form.firstName")}
               className="placeholder:text-[#BCBEC2] h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
             />
             <input
               type="text"
-              placeholder="Last name"
+              placeholder={t("form.lastName")}
               className="placeholder:text-[#BCBEC2] h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
             />
           </div>
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t("form.email")}
             className="placeholder:text-[#BCBEC2] mt-6 h-[52px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
           />
           <textarea
             type="text"
-            placeholder="Leave us a message..."
+            placeholder={t("form.message")}
             className="placeholder:text-[#BCBEC2] mt-6 mb-8 h-[164px] py-5 px-3 w-full rounded-[26px] shadow-[0px_1px_2px_0px_#1018280D] border border-solid border-[#EEEEEE]"
           />
           <div className="flex gap-3 items-center">
@@ -274,11 +276,11 @@ function ContactUs() {
               {checked && <span className="text-green-500 text-sm">✓</span>}
             </label>
             <p className="text-[#787F84] text-base font-medium">
-              You agree to our friendly privacy policy.
+              {t("form.privacy")}
             </p>
           </div>
           <button className="mt-[32px] font-semibold w-full text-sm rounded-[48px] text-white p-[12px_24px_12px_24px] bg-[#37A16C] border-[#36BD79] border">
-            Send message
+            {t("form.send")}
           </button>
         </div>
       </div>

@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "contact": "Bog'lanish",
+    "info": "Ma'lumot"
+  },
+  "welcome": {
+    "title": "Xush kelibsiz",
+    "subtitle": "Bu bizning platformamiz",
+    "description": "Daraxt ekib ekosistemani saqlashga yordam bering, xayr-ehsoningiz orqali hissa qo'shing!",
+    "choose": "Tanlang",
+    "saveWorld": "Dunyoni saqlang"
+  },
+  "mission": {
+    "title": "Atrof-muhitni himoya qilish va parvarish qilishga majburiyat",
+    "subtitle": "Plant a Tree hisobingizda daraxtlarni to'plang va jamoamizning bir qismi bo'ling",
+    "personalPlanting": {
+      "title": "Shaxsiy ekish",
+      "description": "O'zingiz yoki sevimli kishilaringiz uchun unikal sovg'a sifatida tegl bilan daraxt xayr qiling, so'ng sertifikatni yuklab oling yoki virtual tarzda sovg'a qiling! Biz uni ekganimizdan keyin, sizga shaxsiylashtirilgan teg ko'rinadigan ko'chatning fotosuratini yuboramiz.",
+      "button": "Hozir xayr qiling"
+    },
+    "corporatePlanting": {
+      "title": "Korporativ ekish",
+      "description": "Kompaniyangiz yoki shaxslar nomidan daraxtlar xayr qiling. Siz buni onlayn, tadbirlarda yoki do'konda, kerak bo'lsa, vaucherlar yordamida qila olasiz.",
+      "button": "Hamkorimiz bo'ling"
+    }
+  },
+  "pledge": {
+    "title": "Atrof-muhitni himoya qilish va parvarish qilishga majburiyat",
+    "description": "Bu yerda bizning tashabbusimizda biz atrof-muhitga chuqur hurmat va har bir daraxtning sayyoramiz salomatligidagi muhim rol bilan yondashamiz. Shuning uchun biz qayta o'rmonlashtirish ishlariga yordam berishga bag'ishlandik, asosan Yevropa Ittifoqida e'tibor qaratdik. Bizning tashabbusimiz nafaqat oddiy daraxt ekish loyihasi, bu sayyoraga sadoqat va kelajak avlodlar uchun qoldiradigan meros.",
+    "button": "Hozir ekish"
+  },
+  "pledge2": {
+    "title": "Kelajak uchun daraxt ekish majburiyati, mutaxassislar parvarishi bilan",
+    "description": "Biz har bir homiymiz va sayyora bilan qat'iy majburiyat olamiz - siz yordam bergan daraxtlar kesilmaydi. Biz kelajak uchun ekamiz, uzoq muddatli atrof-muhit barqarorligi va biologik xilma-xillikga hissa qo'shadigan jonli meros yaratamiz. O'rmonchilik mutaxassislari bilan yaqin hamkorlikda, har bir daraxt ularning mutaxassis yo'riqnomalari bo'yicha ekilgani va parvarish qilinishini ta'minlaymiz.",
+    "button": "Hozir ekish"
+  },
+  "gallery": {
+    "title": "Ularning qanday chiroyli ekanligini ko'ring",
+    "button": "Hozir ekish"
+  },
+  "plant": {
+    "title": "Biz ularni qayerda ekamiz?",
+    "description": "O'zbekiston bo'ylab va yana ko'p mamlakatlar keladi !"
+  },
+  "contact": {
+    "title": "Biz bilan bog'lanish",
+    "email": {
+      "label": "Email",
+      "description": "Bizning do'stona jamoamiz yordamga tayyor.",
+      "value": "hi@plantatreeten.com"
+    },
+    "team": {
+      "label": "Bizning jamoa",
+      "description": "Bizning do'stona jamoamiz yordamga tayyor.",
+      "value": "Plantatree Nonprofit Ltd."
+    },
+    "office": {
+      "label": "Ofis",
+      "description": "Ofisimizga salom aytib keling.",
+      "value": "Toshkent, O'zbekiston"
+    },
+    "phone": {
+      "label": "Telefon",
+      "description": "Dushanbadan jumagacha soat 8:00 dan 17:00 gacha.",
+      "value": "+1 (000) 000-00-00"
+    },
+    "form": {
+      "firstName": "Ism",
+      "lastName": "Familiya",
+      "email": "Email",
+      "message": "Bizga xabar qoldiring...",
+      "privacy": "Siz bizning do'stona maxfiylik siyosatimizga rozi bo'lasiz.",
+      "send": "Xabar yuborish"
+    }
+  },
+  "footer": {
+    "links": {
+      "project": "Bizning loyiha",
+      "plantNow": "Hozir ekish",
+      "plantPartners": "Hamkorlarimiz bilan ekish",
+      "bePartner": "Hamkorimiz bo'ling",
+      "contact": "Bog'lanish"
+    },
+    "copyright": "© 2024 Daraxt ekish. Barcha huquqlar himoyalangan.",
+    "terms": "Shartlar",
+    "privacy": "Maxfiylik",
+    "cookies": "Kukilar"
+  }
+}

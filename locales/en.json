@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "info": "Info"
+  },
+  "welcome": {
+    "title": "Welcome",
+    "subtitle": "This is our platform",
+    "description": "Help save the ecosystem by planting a tree, contribute through your donation!",
+    "choose": "Choose",
+    "saveWorld": "Save the world"
+  },
+  "mission": {
+    "title": "Our Pledge to Protect and Nurture the Environment",
+    "subtitle": "Collect trees in your Plant a Tree account and be part of our community",
+    "personalPlanting": {
+      "title": "Personal planting",
+      "description": "Donate a tree with a tag for yourself or your loved ones as a unique gift, then download the certificate or virtually gift it! After we planted it, we'll send you a photo of the sapling, complete with your personalized tag visible.",
+      "button": "Donate now"
+    },
+    "corporatePlanting": {
+      "title": "Corporate planting",
+      "description": "Donate trees in the name of your company or individuals. You can do this online, at events, or in-store, using vouchers if desired.",
+      "button": "Be our partner"
+    }
+  },
+  "pledge": {
+    "title": "Our Pledge to Protect and Nurture the Environment",
+    "description": "Here at our initiative, we're driven by a deep-seated respect for our environment and the critical role each tree plays in our planet's health. This is why we've dedicated ourselves to aid reforestation efforts, focusing primarily within the European Union. Our initiative is not just a simple tree planting project, it's a testament to our commitment to the planet, a legacy we're leaving for future generations.",
+    "button": "Plant now"
+  },
+  "pledge2": {
+    "title": "Our Pledge Planting Trees for the Future, With Expert Care",
+    "description": "We make a firm pledge to each of our patrons and the planet – the trees you help plant will not be cut down. We're planting for the future, establishing living legacies that contribute to long-term environmental sustainability and biodiversity. Working closely with forestry professionals, we ensure that every tree is planted and nurtured according to their expert guidance. Our commitment to professional, careful stewardship ensures the best possible start for each sapling we plant.",
+    "button": "Plant now"
+  },
+  "gallery": {
+    "title": "See how beautiful they are",
+    "button": "Plant now"
+  },
+  "plant": {
+    "title": "Where do we plant them?",
+    "description": "All over Uzbekistan, and more countries to come !"
+  },
+  "contact": {
+    "title": "Contact us",
+    "email": {
+      "label": "Email",
+      "description": "Our friendly team is here to help.",
+      "value": "hi@plantatreeten.com"
+    },
+    "team": {
+      "label": "Our team",
+      "description": "Our friendly team is here to help.",
+      "value": "Plantatree Nonprofit Ltd."
+    },
+    "office": {
+      "label": "Office",
+      "description": "Come say hello at our office HQ.",
+      "value": "Tashkent, Uzbekistan"
+    },
+    "phone": {
+      "label": "Phone",
+      "description": "Mon-Fri from 8am to 5pm.",
+      "value": "+1 (000) 000-00-00"
+    },
+    "form": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "message": "Leave us a message...",
+      "privacy": "You agree to our friendly privacy policy.",
+      "send": "Send message"
+    }
+  },
+  "footer": {
+    "links": {
+      "project": "Our project",
+      "plantNow": "Plant now",
+      "plantPartners": "Plant with our partners",
+      "bePartner": "Be our partner",
+      "contact": "Contact Us"
+    },
+    "copyright": "© 2024 Plant a tree. All rights reserved.",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
+  }
+}

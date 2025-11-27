@@ -1,19 +1,21 @@
 "use client";
 import Image from "next/image";
-import Clouds from "./components/clouds";
-import Mountains from "./components/mountains";
+import Clouds from "../components/clouds";
+import Mountains from "../components/mountains";
 import { useState } from "react";
-import Tree from "./components/tree";
-import BirdAnimation from "./components/bird-animation";
-import FlockOfBirds from "./components/flock-of-birds";
-import Pledge from "./components/sections/pledge";
-import Mission from "./components/sections/mission";
-import Pledge2 from "./components/sections/pledge-2";
-import Gallery from "./components/sections/gallery";
-import Plant from "./components/sections/plant";
-import ContactUs from "./components/sections/contact-us";
+import Tree from "../components/tree";
+import BirdAnimation from "../components/bird-animation";
+import FlockOfBirds from "../components/flock-of-birds";
+import Pledge from "../components/sections/pledge";
+import Mission from "../components/sections/mission";
+import Pledge2 from "../components/sections/pledge-2";
+import Gallery from "../components/sections/gallery";
+import Plant from "../components/sections/plant";
+import ContactUs from "../components/sections/contact-us";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("welcome");
   const [treeCount, setTreeCount] = useState(1);
 
   function onClick() {
@@ -36,13 +38,12 @@ export default function Home() {
         className="mb-5"
       />
       <p className="text-[#787F84] text-center font-medium text-[22px] max-w-[520px]">
-        Help save the ecosystem by planting a tree, contribute through your
-        donation!
+        {t("description")}
       </p>
       <div className="bg-[#FFFFFF99] relative z-20 mt-[64px] w-[453px] rounded-[20px]  border-white border-2 shadow-[0px_32px_28px_0px_#E4E4E433]">
         <div className="h-[172px] px-10 py-9 border-b-2 flex-col border-b-white flex items-center justify-between">
           <h3 className="text-[#202225] text-center font-medium text-[28px] ">
-            Choose
+            {t("choose")}
           </h3>
           <div className="relative w-full">
             <input
@@ -94,7 +95,7 @@ export default function Home() {
             className="rounded-[15px_15px_13px_13px] h-[68px] w-[165px] text-white active:text-[#ffffffcc ] active:p-[1px] p-[1px_2px_5px_2px] bg-[#08743E] border-2 border-white shadow-[0px_1px_1px_0px_#00000040] "
           >
             <div className="flex items-center justify-center font-bold text-base bg-[#37A16C] border-t border-b rounded-xl border-[#36BD79] w-full px-5 py-4 h-full ">
-              Save the world
+              {t("saveWorld")}
             </div>
           </button>
         </div>
