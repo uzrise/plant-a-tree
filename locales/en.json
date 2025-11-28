@@ -218,6 +218,7 @@
       "treeCount": "Trees",
       "anonymous": "Anonymous",
       "date": "Date",
+      "status": "Status",
       "totalAmount": "Total Amount",
       "donationCount": "Donation Count",
       "viewProfile": "View Profile →",
@@ -228,7 +229,15 @@
       "totalTrees": "Total Trees",
       "times": "times",
       "lastDonation": "Last donation",
-      "lastDate": "Last date"
+      "lastDate": "Last date",
+      "groupedView": "Grouped",
+      "tableView": "Table",
+      "status": {
+        "pending": "Pending",
+        "success": "Success",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      }
     }
   },
   "errors": {
@@ -254,11 +263,13 @@
   },
   "validation": {
     "emailInvalid": "Invalid email address",
+    "emailRequired": "Email is required",
     "passwordMin": "Password must be at least 6 characters",
     "nameRequired": "Name is required",
     "surnameRequired": "Surname is required",
     "phoneRequired": "Phone is required",
-    "passwordsDontMatch": "Passwords don't match"
+    "passwordsDontMatch": "Passwords don't match",
+    "otpMustBe6Digits": "OTP must be 6 digits"
   },
   "donation": {
     "title": "Make a Donation",

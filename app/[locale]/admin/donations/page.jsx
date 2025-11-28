@@ -12,7 +12,9 @@ export default function AdminDonationsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [groupedDonations, setGroupedDonations] = useState([]);
+  const [allDonations, setAllDonations] = useState([]);
   const [expandedUsers, setExpandedUsers] = useState(new Set());
+  const [viewMode, setViewMode] = useState('grouped'); // 'grouped' or 'table'
 
   useEffect(() => {
     checkAdmin();
@@ -36,8 +38,12 @@ export default function AdminDonationsPage() {
 
   const loadDonations = async () => {
     try {
-      const response = await donationsAPI.getAllGrouped();
-      setGroupedDonations(response.data);
+      const [groupedResponse, allResponse] = await Promise.all([
+        donationsAPI.getAllGrouped(),
+        donationsAPI.getAll(),
+      ]);
+      setGroupedDonations(groupedResponse.data);
+      setAllDonations(allResponse.data);
     } catch (err) {
       console.error('Failed to load donations:', err);
       const errorMessage = err.response?.data?.message || err.message || t('donations.loadError');
@@ -63,6 +69,21 @@ export default function AdminDonationsPage() {
     return new Date(dateString).toLocaleString();
   };
 
+  const getStatusBadge = (status) => {
+    const statusConfig = {
+      pending: { label: t('donations.status.pending'), color: 'bg-yellow-100 text-yellow-800' },
+      paid: { label: t('donations.status.success'), color: 'bg-green-100 text-green-800' },
+      failed: { label: t('donations.status.failed'), color: 'bg-red-100 text-red-800' },
+      cancelled: { label: t('donations.status.cancelled'), color: 'bg-gray-100 text-gray-800' },
+    };
+    const config = statusConfig[status] || { label: status, color: 'bg-gray-100 text-gray-800' };
+    return (
+      <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${config.color}`}>
+        {config.label}
+      </span>
+    );
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -79,12 +100,36 @@ export default function AdminDonationsPage() {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold text-[#08743E]">{t('donations.title')}</h1>
-            <Link
-              href="/admin"
-              className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-            >
-              {t('donations.backToDashboard')}
-            </Link>
+            <div className="flex gap-4 items-center">
+              <div className="flex gap-2 bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setViewMode('grouped')}
+                  className={`px-4 py-2 rounded-md transition-colors ${
+                    viewMode === 'grouped'
+                      ? 'bg-white text-[#08743E] shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {t('donations.groupedView')}
+                </button>
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`px-4 py-2 rounded-md transition-colors ${
+                    viewMode === 'table'
+                      ? 'bg-white text-[#08743E] shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {t('donations.tableView')}
+                </button>
+              </div>
+              <Link
+                href="/admin"
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                {t('donations.backToDashboard')}
+              </Link>
+            </div>
           </div>
 
           {error && (
@@ -93,7 +138,78 @@ export default function AdminDonationsPage() {
             </div>
           )}
 
-          {groupedDonations.length === 0 ? (
+          {viewMode === 'table' ? (
+            // Table View - All Donations
+            allDonations.length === 0 ? (
+              <div className="text-center py-12 text-gray-500">
+                {t('donations.noDonations')}
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.user')}
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.amount')}
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.treeCount')}
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.status')}
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.anonymous')}
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {t('donations.date')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {allDonations.map((donation) => (
+                      <tr key={donation._id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm font-medium text-gray-900">
+                            {donation.userId?.email || 'N/A'}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {donation.userId?.name} {donation.userId?.surname}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {formatAmount(donation.amount)} UZS
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {donation.treeCount}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {getStatusBadge(donation.paymentStatus)}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span
+                            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                              donation.anonymous
+                                ? 'bg-yellow-100 text-yellow-800'
+                                : 'bg-green-100 text-green-800'
+                            }`}
+                          >
+                            {donation.anonymous ? t('donations.anonymous') : t('donations.no')}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {formatDate(donation.createdAt)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          ) : groupedDonations.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               {t('donations.noDonations')}
             </div>
@@ -204,6 +320,9 @@ export default function AdminDonationsPage() {
                                 {t('donations.treeCount')}
                               </th>
                               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {t('donations.status')}
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 {t('donations.anonymous')}
                               </th>
                               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -219,6 +338,9 @@ export default function AdminDonationsPage() {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                   {donation.treeCount}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                  {getStatusBadge(donation.paymentStatus || 'pending')}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span

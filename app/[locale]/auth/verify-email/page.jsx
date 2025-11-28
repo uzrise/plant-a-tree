@@ -9,13 +9,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { authAPI } from '../../../../lib/api';
 import { translateBackendError } from '../../../../lib/errorTranslations';
 
-const otpSchema = z.object({
-  otpCode: z.string().length(6, 'OTP must be 6 digits'),
-});
-
 export default function VerifyEmailPage() {
   const t = useTranslations('auth');
   const errorT = useTranslations('errors');
+  const validationT = useTranslations('validation');
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -23,6 +20,10 @@ export default function VerifyEmailPage() {
   const [loading, setLoading] = useState(false);
   const [resending, setResending] = useState(false);
   const [countdown, setCountdown] = useState(0);
+
+  const otpSchema = z.object({
+    otpCode: z.string().length(6, validationT('otpMustBe6Digits')),
+  });
 
   const {
     register,
@@ -41,7 +42,7 @@ export default function VerifyEmailPage() {
 
   const onSubmit = async (data) => {
     if (!email) {
-      setError('Email is required');
+      setError(validationT('emailRequired'));
       return;
     }
 
@@ -78,7 +79,7 @@ export default function VerifyEmailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600">Email parameter is missing</p>
+          <p className="text-red-600">{validationT('emailRequired')}</p>
         </div>
       </div>
     );

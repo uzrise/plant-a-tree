@@ -218,6 +218,7 @@
       "treeCount": "Daraxtlar",
       "anonymous": "Anonim",
       "date": "Sana",
+      "status": "Holat",
       "totalAmount": "Jami summa",
       "donationCount": "Xayr-ehsonlar soni",
       "viewProfile": "Profildan ko'rish →",
@@ -228,7 +229,15 @@
       "totalTrees": "Jami daraxtlar",
       "times": "marta",
       "lastDonation": "Oxirgi xayr-ehson",
-      "lastDate": "Oxirgi sana"
+      "lastDate": "Oxirgi sana",
+      "groupedView": "Guruhlangan",
+      "tableView": "Jadval",
+      "status": {
+        "pending": "Kutilmoqda",
+        "success": "Muvaffaqiyatli",
+        "failed": "Muvaffaqiyatsiz",
+        "cancelled": "Bekor qilingan"
+      }
     }
   },
   "errors": {
@@ -254,11 +263,13 @@
   },
   "validation": {
     "emailInvalid": "Noto'g'ri email manzil",
+    "emailRequired": "Email kiritilishi shart",
     "passwordMin": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
     "nameRequired": "Ism kiritilishi shart",
     "surnameRequired": "Familiya kiritilishi shart",
     "phoneRequired": "Telefon kiritilishi shart",
-    "passwordsDontMatch": "Parollar mos kelmaydi"
+    "passwordsDontMatch": "Parollar mos kelmaydi",
+    "otpMustBe6Digits": "OTP kodi 6 ta raqamdan iborat bo'lishi kerak"
   },
   "donation": {
     "title": "Xayr-ehson qilish",

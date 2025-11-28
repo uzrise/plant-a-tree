@@ -218,6 +218,7 @@
       "treeCount": "Деревья",
       "anonymous": "Анонимно",
       "date": "Дата",
+      "status": "Статус",
       "totalAmount": "Общая сумма",
       "donationCount": "Количество пожертвований",
       "viewProfile": "Просмотр профиля →",
@@ -228,7 +229,15 @@
       "totalTrees": "Всего деревьев",
       "times": "раз",
       "lastDonation": "Последнее пожертвование",
-      "lastDate": "Последняя дата"
+      "lastDate": "Последняя дата",
+      "groupedView": "Группированный",
+      "tableView": "Таблица",
+      "status": {
+        "pending": "В ожидании",
+        "success": "Успешно",
+        "failed": "Неудачно",
+        "cancelled": "Отменено"
+      }
     }
   },
   "errors": {
@@ -254,11 +263,13 @@
   },
   "validation": {
     "emailInvalid": "Неверный адрес электронной почты",
+    "emailRequired": "Email обязателен",
     "passwordMin": "Пароль должен содержать не менее 6 символов",
     "nameRequired": "Имя обязательно",
     "surnameRequired": "Фамилия обязательна",
     "phoneRequired": "Телефон обязателен",
-    "passwordsDontMatch": "Пароли не совпадают"
+    "passwordsDontMatch": "Пароли не совпадают",
+    "otpMustBe6Digits": "OTP должен состоять из 6 цифр"
   },
   "donation": {
     "title": "Сделать пожертвование",

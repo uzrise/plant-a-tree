@@ -10,17 +10,18 @@ import Link from 'next/link';
 import { authAPI } from '../../../../lib/api';
 import { translateBackendError } from '../../../../lib/errorTranslations';
 
-const loginSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-});
-
 export default function LoginPage() {
   const t = useTranslations('auth');
   const errorT = useTranslations('errors');
+  const validationT = useTranslations('validation');
   const router = useRouter();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const loginSchema = z.object({
+    email: z.string().email(validationT('emailInvalid')),
+    password: z.string().min(6, validationT('passwordMin')),
+  });
 
   const {
     register,

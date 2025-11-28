@@ -9,21 +9,22 @@ import { useRouter } from 'next/navigation';
 import { usersAPI, authAPI } from '../../../lib/api';
 import { translateBackendError } from '../../../lib/errorTranslations';
 
-const profileSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  surname: z.string().min(1, 'Surname is required'),
-  phone: z.string().min(1, 'Phone is required'),
-});
-
 export default function ProfilePage() {
   const t = useTranslations('profile');
   const errorT = useTranslations('errors');
+  const validationT = useTranslations('validation');
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [editMode, setEditMode] = useState(false);
+
+  const profileSchema = z.object({
+    name: z.string().min(1, validationT('nameRequired')),
+    surname: z.string().min(1, validationT('surnameRequired')),
+    phone: z.string().min(1, validationT('phoneRequired')),
+  });
 
   const {
     register,

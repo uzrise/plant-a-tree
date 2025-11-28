@@ -10,21 +10,22 @@ import Link from 'next/link';
 import { authAPI } from '../../../../lib/api';
 import { translateBackendError } from '../../../../lib/errorTranslations';
 
-const registerSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-  confirmPassword: z.string(),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ['confirmPassword'],
-});
-
 export default function RegisterPage() {
   const t = useTranslations('auth');
   const errorT = useTranslations('errors');
+  const validationT = useTranslations('validation');
   const router = useRouter();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const registerSchema = z.object({
+    email: z.string().email(validationT('emailInvalid')),
+    password: z.string().min(6, validationT('passwordMin')),
+    confirmPassword: z.string(),
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: validationT('passwordsDontMatch'),
+    path: ['confirmPassword'],
+  });
 
   const {
     register,

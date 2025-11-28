@@ -13,6 +13,27 @@ const axiosInstance = axios.create({
 // Request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
+    // Get current locale from URL path (Next.js locale routing)
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      // Extract locale from pathname (e.g., /uz/auth/register -> uz)
+      const pathSegments = pathname.split('/').filter(Boolean);
+      const locale = pathSegments[0] || 
+                     document.documentElement.lang || 
+                     localStorage.getItem('locale') || 
+                     'uz';
+      
+      // Set Accept-Language header based on locale
+      const languageMap = {
+        'uz': 'uz',
+        'en': 'en',
+        'ru': 'ru',
+      };
+      
+      const acceptLanguage = languageMap[locale] || 'uz';
+      config.headers['Accept-Language'] = acceptLanguage;
+    }
+    
     return config;
   },
   (error) => {
