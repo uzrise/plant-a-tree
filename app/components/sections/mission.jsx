@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 function Mission() {
   const t = useTranslations("mission");
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
+    <section className=" bg-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
       <div className="max-w-full sm:max-w-[640px] md:max-w-[720px] lg:max-w-[768px] mx-auto space-y-4 sm:space-y-5">
         <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           {t("title")}

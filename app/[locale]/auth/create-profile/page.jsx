@@ -35,7 +35,7 @@ export default function CreateProfilePage() {
     setLoading(true);
     try {
       await usersAPI.updateProfile(data);
-      router.push('/profile');
+      router.push('/');
     } catch (err) {
       const errorMsg = err.response?.data?.message || errorT('updateProfileFailed');
       setError(translateBackendError(errorMsg, errorT));

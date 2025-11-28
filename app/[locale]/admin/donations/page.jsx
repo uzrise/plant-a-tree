@@ -27,6 +27,7 @@ export default function AdminDonationsPage() {
         loadDonations();
       }
     } catch (err) {
+      console.error('Admin check failed:', err);
       router.push('/auth/login');
     } finally {
       setLoading(false);
@@ -38,7 +39,9 @@ export default function AdminDonationsPage() {
       const response = await donationsAPI.getAllGrouped();
       setGroupedDonations(response.data);
     } catch (err) {
-      setError(t('donations.loadError'));
+      console.error('Failed to load donations:', err);
+      const errorMessage = err.response?.data?.message || err.message || t('donations.loadError');
+      setError(errorMessage);
     }
   };
 

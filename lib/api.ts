@@ -57,6 +57,9 @@ export const donationsAPI = {
   create: (data: { amount: number; treeCount: number; anonymous: boolean }) =>
     axiosInstance.post('/donations', data),
 
+  verifyPayment: (donationId: string) =>
+    axiosInstance.post(`/donations/${donationId}/verify-payment`),
+
   getTopContributors: () => axiosInstance.get('/donations/top-contributors'),
 
   getAll: () => axiosInstance.get('/donations/all'),

@@ -9,6 +9,7 @@ import FooterCopyright from "../components/footer-copyright";
 import NavInfoButton from "../components/nav-info-button";
 import { Poppins } from "next/font/google";
 import { routing } from "../../middleware";
+import Link from "next/link";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ const poppins = Poppins({
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const messages = (await import(`../../locales/${locale}.json`)).default;
-  
+
   return {
     title: "Plant a Tree",
     description: messages.welcome.description,
@@ -33,7 +34,7 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
-  
+
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale)) {
     notFound();
@@ -50,7 +51,9 @@ export default async function LocaleLayout({ children, params }) {
       >
         <NextIntlClientProvider messages={messages}>
           <header className="mx-4 sm:mx-6 md:mx-8 lg:mx-10 py-4 sm:py-5 md:py-6 lg:py-7 min-h-[80px] sm:h-[88px] md:h-[96px] flex sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 border-b-2 border-b-[#EEEEEE]">
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4 w-full sm:w-auto justify-end">
               <LanguageSelector />
               <NavInfoButton />

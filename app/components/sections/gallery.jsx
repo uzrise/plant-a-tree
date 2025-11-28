@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 function Gallery() {
   const t = useTranslations("gallery");
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] flex flex-col w-full px-4 sm:px-6 md:px-8">
+    <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] flex flex-col w-full px-4 sm:px-6 md:px-8">
       <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
         {t("title")}
       </h1>

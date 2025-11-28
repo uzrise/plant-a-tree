@@ -28,9 +28,19 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // Log server errors for debugging
+    if (error.response?.status >= 500) {
+      console.error('Internal Server Error:', {
+        url: originalRequest?.url,
+        status: error.response.status,
+        data: error.response.data,
+        message: error.message,
+      });
+    }
+
     // Skip interceptor for auth endpoints to prevent infinite loops
     const authEndpoints = ['/auth/login', '/auth/register', '/auth/refresh', '/auth/send-otp', '/auth/verify-otp'];
-    const isAuthEndpoint = authEndpoints.some(endpoint => originalRequest.url?.includes(endpoint));
+    const isAuthEndpoint = authEndpoints.some(endpoint => originalRequest?.url?.includes(endpoint));
 
     if (error.response?.status === 401 && !originalRequest._retry && !isAuthEndpoint) {
       originalRequest._retry = true;

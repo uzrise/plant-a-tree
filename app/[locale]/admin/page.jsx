@@ -27,6 +27,7 @@ export default function AdminDashboardPage() {
       // User is admin, allow access
       setLoading(false);
     } catch (err) {
+      console.error('Admin check failed:', err);
       // Immediately redirect unauthenticated users
       router.replace('/auth/login');
       return;

@@ -2,11 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { usersAPI, authAPI } from "../../lib/api";
 
 export default function NavInfoButton() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [hasProfile, setHasProfile] = useState(false);
   const [user, setUser] = useState(null);
@@ -18,10 +20,6 @@ export default function NavInfoButton() {
     return `${firstInitial}${lastInitial}`;
   };
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
   const checkAuth = async () => {
     try {
       await authAPI.refresh();
@@ -30,14 +28,22 @@ export default function NavInfoButton() {
       if (response.data.name && response.data.surname) {
         setHasProfile(true);
         setUser(response.data);
+      } else {
+        setHasProfile(false);
+        setUser(null);
       }
     } catch (err) {
       setIsAuthenticated(false);
       setHasProfile(false);
+      setUser(null);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    checkAuth();
+  }, [pathname]);
 
   if (loading) {
     return (

@@ -264,7 +264,7 @@
     "title": "Make a Donation",
     "amount": "Amount (UZS)",
     "amountHint": "Based on {treeCount} tree(s). Default: {baseAmount} UZS. You can adjust the amount.",
-    "amountError": "Amount must be between 12,000 and 100,000,000 UZS",
+    "amountError": "Amount must be between 120,000 and 100,000,000 UZS",
     "anonymous": "Donate anonymously",
     "cancel": "Cancel",
     "donate": "Donate",

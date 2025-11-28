@@ -264,7 +264,7 @@
     "title": "Xayr-ehson qilish",
     "amount": "Summa (UZS)",
     "amountHint": "{treeCount} ta daraxt asosida. Asosiy: {baseAmount} UZS. Summani o'zgartirishingiz mumkin.",
-    "amountError": "Summa 12,000 va 100,000,000 UZS oralig'ida bo'lishi kerak",
+    "amountError": "Summa 120,000 va 100,000,000 UZS oralig'ida bo'lishi kerak",
     "anonymous": "Anonim xayr-ehson qilish",
     "cancel": "Bekor qilish",
     "donate": "Xayr-ehson qilish",

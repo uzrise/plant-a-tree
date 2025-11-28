@@ -67,7 +67,7 @@ export default function HeroController({ treeCount, setTreeCount }) {
       <p className="text-[#787F84] text-center font-medium text-base sm:text-lg md:text-xl lg:text-[22px] max-w-full sm:max-w-[480px] md:max-w-[520px] px-4">
         {t("description")}
       </p>
-      <div className="bg-[#FFFFFF99] relative z-20 mt-8 sm:mt-12 md:mt-16 lg:mt-[64px] w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[453px] rounded-[20px] border-white border-2 shadow-[0px_32px_28px_0px_#E4E4E433]">
+      <div className="bg-[#FFFFFF99] relative z-20 mt-8 sm:mt-12 md:mt-16 lg:mt-[64px] w-full max-w-[320px] sm:max-w-[380px] md:max-w-[430px] lg:max-w-[453px] rounded-[20px] border-white border-2 shadow-[0px_32px_28px_0px_#E4E4E433]">
         <div className="min-h-[140px] sm:h-[160px] md:h-[172px] px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-7 md:py-8 lg:py-9 border-b-2 flex-col border-b-white flex items-center justify-between">
           <h3 className="text-[#202225] text-center font-medium text-xl sm:text-2xl md:text-[26px] lg:text-[28px]">
             {t("choose")}
@@ -107,19 +107,19 @@ export default function HeroController({ treeCount, setTreeCount }) {
           </div>
         </div>
         <div className="min-h-[100px] sm:h-[110px] md:h-[134px] px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-7 md:py-8 lg:py-9 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
-          <div className="flex text-[#202225] leading-8 sm:leading-9 md:leading-10 font-semibold text-2xl sm:text-[26px] md:text-[28px] lg:text-[32px] gap-2">
+          <div className="flex text-[#202225] leading-8 sm:leading-9 md:leading-10 font-semibold text-xl  gap-1">
             <div className="flex items-center justify-center gap-1">
               {treeCount}
               <Tree />
             </div>
-            <span className="font-semibold text-2xl sm:text-[26px] md:text-[28px] lg:text-[32px] leading-8 sm:leading-9 md:leading-10 text-[#BCBEC2]">
+            <span className="font-semibold  sm:text-[26px]  leading-8 sm:leading-9 md:leading-10 text-[#BCBEC2]">
               =
             </span>
-            <div>{treeCount * 12000} UZS</div>
+            <p>{treeCount * 120000} SUM</p>
           </div>
           <button
             onClick={handleSaveWorld}
-            className="rounded-[15px_15px_13px_13px] h-[56px] sm:h-[60px] md:h-[64px] lg:h-[68px] w-full sm:w-[140px] md:w-[150px] lg:w-[165px] text-white active:text-[#ffffffcc] active:p-[1px] p-[1px_2px_5px_2px] bg-[#08743E] border-2 border-white shadow-[0px_1px_1px_0px_#00000040]"
+            className="rounded-[15px_15px_13px_13px] h-[56px] sm:h-[60px] md:h-[64px] lg:h-[68px] w-full sm:w-[140px]  md:w-[175px] text-white active:text-[#ffffffcc] active:p-[1px] p-[1px_2px_5px_2px] bg-[#08743E] border-2 border-white shadow-[0px_1px_1px_0px_#00000040]"
           >
             <div className="flex items-center justify-center font-bold text-sm sm:text-base bg-[#37A16C] border-t border-b rounded-xl border-[#36BD79] w-full px-4 sm:px-5 py-3 sm:py-4 h-full">
               {t("saveWorld")}

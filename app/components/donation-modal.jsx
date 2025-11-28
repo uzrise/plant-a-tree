@@ -1,17 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import { donationsAPI } from '../../lib/api';
 import { translateBackendError } from '../../lib/errorTranslations';
 
 export default function DonationModal({ treeCount, onClose, onSuccess }) {
   const t = useTranslations('donation');
   const errorT = useTranslations('errors');
-  const [amount, setAmount] = useState(treeCount * 12000);
+  const searchParams = useSearchParams();
+  const [amount, setAmount] = useState(treeCount * 120000);
   const [anonymous, setAnonymous] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [paymentUrl, setPaymentUrl] = useState(null);
+  const [donationId, setDonationId] = useState(null);
+  const [checkingPayment, setCheckingPayment] = useState(false);
+
+  // Check if returning from Payme payment
+  useEffect(() => {
+    const donationIdParam = searchParams?.get('donationId');
+    const paymentStatus = searchParams?.get('payment_status');
+    
+    if (donationIdParam && paymentStatus) {
+      checkPaymentStatus(donationIdParam);
+    }
+  }, [searchParams]);
+
+  const checkPaymentStatus = async (id) => {
+    setCheckingPayment(true);
+    try {
+      const response = await donationsAPI.verifyPayment(id);
+      if (response.data.paid) {
+        // Payment successful
+        if (typeof window !== 'undefined') {
+          window.location.reload();
+        }
+        onSuccess();
+        onClose();
+      } else {
+        setError(t('paymentPending') || 'Payment is still pending. Please wait...');
+      }
+    } catch (err) {
+      console.error('Payment verification error:', err);
+      setError(t('paymentCheckError') || 'Failed to verify payment status');
+    } finally {
+      setCheckingPayment(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,26 +66,31 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
         return;
       }
       
-      if (isNaN(amountNum) || amountNum < 12000 || amountNum > 100000000) {
+      if (isNaN(amountNum) || amountNum < 120000 || amountNum > 100000000) {
         setError(t('amountError'));
         setLoading(false);
         return;
       }
 
-      await donationsAPI.create({
+      // Create donation and get Payme Check form URL
+      const response = await donationsAPI.create({
         amount: amountNum,
         treeCount: treeCountNum,
         anonymous: anonymous,
       });
-      // Reload page to refresh contributors section
-      if (typeof window !== 'undefined') {
-        window.location.reload();
+
+      if (response.data.paymentUrl) {
+        // Store donation ID for later verification
+        setDonationId(response.data.donation._id);
+        
+        // Redirect to Payme Check form (payment page)
+        window.location.href = response.data.paymentUrl;
+      } else {
+        throw new Error('Payment URL not received');
       }
-      onSuccess();
     } catch (err) {
       const errorMsg = err.response?.data?.message || errorT('generic');
       setError(translateBackendError(errorMsg, errorT));
-    } finally {
       setLoading(false);
     }
   };
@@ -66,13 +108,32 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
           </button>
         </div>
 
+        {checkingPayment && (
+          <div className="mb-4 p-3 bg-blue-100 border border-blue-400 text-blue-700 rounded text-sm">
+            {t('verifyingPayment') || 'Verifying payment status...'}
+          </div>
+        )}
+
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {paymentUrl ? (
+          <div className="space-y-4">
+            <p className="text-gray-700">
+              {t('redirectingToPayment') || 'Redirecting to payment page...'}
+            </p>
+            <a
+              href={paymentUrl}
+              className="block w-full px-4 py-2 bg-[#08743E] text-white rounded-lg hover:bg-[#065a2e] transition-colors text-center"
+            >
+              {t('proceedToPayment') || 'Proceed to Payment'}
+            </a>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               {t('amount')}
@@ -81,14 +142,14 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              min={12000}
+              min={120000}
               max={100000000}
               step={1}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#08743E] focus:border-transparent"
               required
             />
             <p className="mt-1 text-xs text-gray-500">
-              {t('amountHint', { treeCount, baseAmount: treeCount * 12000 })}
+              {t('amountHint', { treeCount, baseAmount: treeCount * 120000 })}
             </p>
           </div>
 
@@ -122,6 +183,7 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
             </button>
           </div>
         </form>
+        )}
       </div>
     </div>
   );

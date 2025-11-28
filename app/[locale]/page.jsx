@@ -30,9 +30,9 @@ export default function Home() {
       <Pledge />
       <Mission />
       <Pledge2 />
-      <Gallery />
-      <Plant />
+      <Gallery /> 
       <Contributors />
+      <Plant />
       <ContactUs />
     </main>
   );
