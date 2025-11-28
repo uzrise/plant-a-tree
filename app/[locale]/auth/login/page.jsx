@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { authAPI } from '../../../../lib/api';
-import { translateBackendError } from '../../../../lib/errorTranslations';
+import { translateBackendError, extractErrorMessage } from '../../../../lib/errorTranslations';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
@@ -38,7 +38,7 @@ export default function LoginPage() {
       await authAPI.login(data.email, data.password);
       router.push('/profile');
     } catch (err) {
-      const errorMsg = err.response?.data?.message || errorT('loginFailed');
+      const errorMsg = extractErrorMessage(err, 'loginFailed') || errorT('loginFailed');
       setError(translateBackendError(errorMsg, errorT));
     } finally {
       setLoading(false);

@@ -121,6 +121,8 @@
       "confirmPasswordPlaceholder": "Подтвердите ваш пароль",
       "submit": "Зарегистрироваться",
       "loading": "Регистрация...",
+      "or": "Или",
+      "google": "Войти через Google",
       "hasAccount": "Уже есть аккаунт?",
       "login": "Войти"
     },
@@ -259,7 +261,12 @@
     "useGoogleLogin": "Пожалуйста, войдите через Google",
     "invalidCredentials": "Неверные учетные данные",
     "waitBeforeResend": "Пожалуйста, подождите {seconds} секунд перед запросом нового OTP",
-    "invalidTreeCount": "Неверное количество деревьев"
+    "invalidTreeCount": "Неверное количество деревьев",
+    "donationNotFound": "Пожертвование не найдено",
+    "donationAlreadyPaid": "Пожертвование уже оплачено",
+    "unauthorized": "Неавторизован",
+    "invalidRequest": "Неверный запрос",
+    "adminAccessRequired": "Требуется доступ администратора"
   },
   "validation": {
     "emailInvalid": "Неверный адрес электронной почты",

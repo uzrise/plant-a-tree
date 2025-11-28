@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { authAPI } from '../../../../lib/api';
-import { translateBackendError } from '../../../../lib/errorTranslations';
+import { translateBackendError, extractErrorMessage } from '../../../../lib/errorTranslations';
 
 export default function VerifyEmailPage() {
   const t = useTranslations('auth');
@@ -52,7 +52,7 @@ export default function VerifyEmailPage() {
       await authAPI.verifyOTP(email, data.otpCode);
       router.push('/auth/create-profile');
     } catch (err) {
-      const errorMsg = err.response?.data?.message || errorT('verificationFailed');
+      const errorMsg = extractErrorMessage(err, 'verificationFailed') || errorT('verificationFailed');
       setError(translateBackendError(errorMsg, errorT));
     } finally {
       setLoading(false);
@@ -68,7 +68,7 @@ export default function VerifyEmailPage() {
       await authAPI.sendOTP(email);
       setCountdown(90); // 90 seconds cooldown
     } catch (err) {
-      const errorMsg = err.response?.data?.message || errorT('resendFailed');
+      const errorMsg = extractErrorMessage(err, 'resendFailed') || errorT('resendFailed');
       setError(translateBackendError(errorMsg, errorT));
     } finally {
       setResending(false);

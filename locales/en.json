@@ -121,6 +121,8 @@
       "confirmPasswordPlaceholder": "Confirm your password",
       "submit": "Register",
       "loading": "Registering...",
+      "or": "Or continue with",
+      "google": "Continue with Google",
       "hasAccount": "Already have an account?",
       "login": "Login"
     },
@@ -259,7 +261,12 @@
     "useGoogleLogin": "Please use Google login",
     "invalidCredentials": "Invalid credentials",
     "waitBeforeResend": "Please wait {seconds} seconds before requesting a new OTP",
-    "invalidTreeCount": "Invalid tree count"
+    "invalidTreeCount": "Invalid tree count",
+    "donationNotFound": "Donation not found",
+    "donationAlreadyPaid": "Donation already paid",
+    "unauthorized": "Unauthorized",
+    "invalidRequest": "Invalid request",
+    "adminAccessRequired": "Admin access required"
   },
   "validation": {
     "emailInvalid": "Invalid email address",

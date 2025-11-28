@@ -121,6 +121,8 @@
       "confirmPasswordPlaceholder": "Parolingizni qayta kiriting",
       "submit": "Ro'yxatdan o'tish",
       "loading": "Ro'yxatdan o'tilmoqda...",
+      "or": "Yoki",
+      "google": "Google orqali ro'yxatdan o'tish",
       "hasAccount": "Allaqachon hisobingiz bormi?",
       "login": "Kirish"
     },
@@ -259,7 +261,12 @@
     "useGoogleLogin": "Iltimos, Google orqali kiring",
     "invalidCredentials": "Noto'g'ri ma'lumotlar",
     "waitBeforeResend": "Iltimos, yangi OTP so'rashdan oldin {seconds} soniya kuting",
-    "invalidTreeCount": "Noto'g'ri daraxtlar soni"
+    "invalidTreeCount": "Noto'g'ri daraxtlar soni",
+    "donationNotFound": "Xayriya topilmadi",
+    "donationAlreadyPaid": "Xayriya allaqachon to'langan",
+    "unauthorized": "Ruxsat berilmagan",
+    "invalidRequest": "Noto'g'ri so'rov",
+    "adminAccessRequired": "Admin huquqi talab qilinadi"
   },
   "validation": {
     "emailInvalid": "Noto'g'ri email manzil",

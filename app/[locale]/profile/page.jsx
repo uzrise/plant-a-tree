@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { usersAPI, authAPI } from '../../../lib/api';
-import { translateBackendError } from '../../../lib/errorTranslations';
+import { translateBackendError, extractErrorMessage } from '../../../lib/errorTranslations';
 
 export default function ProfilePage() {
   const t = useTranslations('profile');
@@ -67,7 +67,7 @@ export default function ProfilePage() {
       await loadUser();
       setEditMode(false);
     } catch (err) {
-      const errorMsg = err.response?.data?.message || errorT('updateProfileFailed');
+      const errorMsg = extractErrorMessage(err, 'updateProfileFailed') || errorT('updateProfileFailed');
       setError(translateBackendError(errorMsg, errorT));
     } finally {
       setSaving(false);

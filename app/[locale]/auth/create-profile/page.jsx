@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usersAPI } from '../../../../lib/api';
-import { translateBackendError } from '../../../../lib/errorTranslations';
+import { translateBackendError, extractErrorMessage } from '../../../../lib/errorTranslations';
 
 export default function CreateProfilePage() {
   const t = useTranslations('auth');
@@ -38,7 +38,7 @@ export default function CreateProfilePage() {
       await usersAPI.updateProfile(data);
       router.push('/');
     } catch (err) {
-      const errorMsg = err.response?.data?.message || errorT('updateProfileFailed');
+      const errorMsg = extractErrorMessage(err, 'updateProfileFailed') || errorT('updateProfileFailed');
       setError(translateBackendError(errorMsg, errorT));
     } finally {
       setLoading(false);
