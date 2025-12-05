@@ -12,6 +12,7 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
   const searchParams = useSearchParams();
   const [amount, setAmount] = useState(treeCount * 120000);
   const [anonymous, setAnonymous] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [paymentUrl, setPaymentUrl] = useState(null);
@@ -68,6 +69,12 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
       
       if (isNaN(amountNum) || amountNum < 120000 || amountNum > 100000000) {
         setError(t('amountError'));
+        setLoading(false);
+        return;
+      }
+
+      if (!privacyAccepted) {
+        setError(t('privacyRequired'));
         setLoading(false);
         return;
       }
@@ -163,6 +170,34 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
             />
             <label htmlFor="anonymous" className="text-sm text-gray-700">
               {t('anonymous')}
+            </label>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <input
+              type="checkbox"
+              id="privacy"
+              checked={privacyAccepted}
+              onChange={(e) => setPrivacyAccepted(e.target.checked)}
+              className="w-4 h-4 text-[#08743E] border-gray-300 rounded focus:ring-[#08743E] mt-0.5"
+              required
+            />
+            <label htmlFor="privacy" className="text-sm text-gray-700">
+              {t('privacyAgreement')}{' '}
+              <a
+                href={`https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(
+                  typeof window !== 'undefined' 
+                    ? `${window.location.origin}/Политика_конфиденциальности.docx`
+                    : '/Политика_конфиденциальности.docx'
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#08743E] hover:text-[#065a2e] underline"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {t('privacyPolicy')}
+              </a>
+              {t('privacyAgreementSuffix')}
             </label>
           </div>
 
