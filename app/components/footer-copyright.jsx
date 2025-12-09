@@ -5,22 +5,25 @@ import { useTranslations } from "next-intl";
 export default function FooterCopyright() {
   const t = useTranslations("footer");
   
+  // Productionda doim ishlashi uchun to'g'ridan-to'g'ri fayl pathlarini ishlatamiz
   const getPublicOfferUrl = () => {
     if (typeof window !== 'undefined') {
-      return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(
-        `${window.location.origin}/Публичная_оферта.docx`
-      )}`;
+      // Client-side: to'liq URL yaratamiz
+      const baseUrl = window.location.origin;
+      return `${baseUrl}/Публичная_оферта.docx`;
     }
-    return '#';
+    // Server-side: relative path qaytaramiz (Next.js avtomatik to'ldiradi)
+    return '/Публичная_оферта.docx';
   };
 
   const getPrivacyPolicyUrl = () => {
     if (typeof window !== 'undefined') {
-      return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(
-        `${window.location.origin}/Политика_конфиденциальности.docx`
-      )}`;
+      // Client-side: to'liq URL yaratamiz
+      const baseUrl = window.location.origin;
+      return `${baseUrl}/Политика_конфиденциальности.docx`;
     }
-    return '#';
+    // Server-side: relative path qaytaramiz (Next.js avtomatik to'ldiradi)
+    return '/Политика_конфиденциальности.docx';
   };
 
   return (
