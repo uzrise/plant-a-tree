@@ -5,24 +5,19 @@ import { useTranslations } from "next-intl";
 export default function FooterCopyright() {
   const t = useTranslations("footer");
   
-  // Productionda doim ishlashi uchun to'g'ridan-to'g'ri fayl pathlarini ishlatamiz
   const getPublicOfferUrl = () => {
     if (typeof window !== 'undefined') {
-      // Client-side: to'liq URL yaratamiz
-      const baseUrl = window.location.origin;
-      return `${baseUrl}/Публичная_оферта.docx`;
+      const fileUrl = `${window.location.origin}/Публичная_оферта.docx`;
+      return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
     }
-    // Server-side: relative path qaytaramiz (Next.js avtomatik to'ldiradi)
     return '/Публичная_оферта.docx';
   };
 
   const getPrivacyPolicyUrl = () => {
     if (typeof window !== 'undefined') {
-      // Client-side: to'liq URL yaratamiz
-      const baseUrl = window.location.origin;
-      return `${baseUrl}/Политика_конфиденциальности.docx`;
+      const fileUrl = `${window.location.origin}/Политика_конфиденциальности.docx`;
+      return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
     }
-    // Server-side: relative path qaytaramiz (Next.js avtomatik to'ldiradi)
     return '/Политика_конфиденциальности.docx';
   };
 
