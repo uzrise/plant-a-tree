@@ -6,19 +6,19 @@ export default function FooterCopyright() {
   const t = useTranslations("footer");
   
   const getPublicOfferUrl = () => {
-    if (typeof window !== 'undefined') {
-      const fileUrl = `${window.location.origin}/Публичная_оферта.docx`;
+    // if (typeof window !== 'undefined') {
+      const fileUrl = `https://www.yashil-hamkor.uz/Публичная_оферта.docx`;
       return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
-    }
-    return '/Публичная_оферта.docx';
+    // }
+    // return '/Публичная_оферта.docx';
   };
 
   const getPrivacyPolicyUrl = () => {
-    if (typeof window !== 'undefined') {
-      const fileUrl = `${window.location.origin}/Политика_конфиденциальности.docx`;
+    // if (typeof window !== 'undefined') {
+      const fileUrl = `https://www.yashil-hamkor.uz/Политика_конфиденциальности.docx`;
       return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
-    }
-    return '/Политика_конфиденциальности.docx';
+    // }
+    // return '/Политика_конфиденциальности.docx';
   };
 
   return (
