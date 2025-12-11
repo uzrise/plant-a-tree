@@ -291,7 +291,12 @@
     "cancel": "Bekor qilish",
     "donate": "Xayr-ehson qilish",
     "processing": "Jarayonda...",
-    "success": "Xayr-ehsoningiz uchun rahmat!"
+    "success": "Xayr-ehsoningiz uchun rahmat!",
+    "paymentSuccess": "To'lov muvaffaqiyatli!",
+    "paymentSuccessMessage": "Sahaviy xayr-ehsoningiz uchun rahmat! Sizning hissangiz daraxtlar ekish va atrof-muhitni himoya qilishga yordam beradi.",
+    "autoCloseIn": "Avtomatik yopiladi",
+    "seconds": "soniyadan keyin",
+    "close": "Yopish"
   },
   "contributors": {
     "title": "Bizning homiylarimiz",

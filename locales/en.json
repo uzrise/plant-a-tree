@@ -291,7 +291,12 @@
     "cancel": "Cancel",
     "donate": "Donate",
     "processing": "Processing...",
-    "success": "Thank you for your donation!"
+    "success": "Thank you for your donation!",
+    "paymentSuccess": "Payment Successful!",
+    "paymentSuccessMessage": "Thank you for your generous donation! Your contribution helps us plant trees and protect our environment.",
+    "autoCloseIn": "Auto-closing in",
+    "seconds": "seconds",
+    "close": "Close"
   },
   "contributors": {
     "title": "Our contributors",

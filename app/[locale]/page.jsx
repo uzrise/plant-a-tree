@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import HeroController from "../components/hero-controller";
 import Clouds from "../components/clouds";
 import Mountains from "../components/mountains";
@@ -12,12 +13,47 @@ import Gallery from "../components/sections/gallery";
 import Plant from "../components/sections/plant";
 import Contributors from "../components/sections/contributors";
 import ContactUs from "../components/sections/contact-us";
+import PaymentSuccessModal from "../components/payment-success-modal";
 
 export default function Home() {
   const [treeCount, setTreeCount] = useState(1);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Check if returning from successful payment
+    const donationId = searchParams?.get('donationId');
+    const paymentStatus = searchParams?.get('payment_status');
+    
+    if (donationId && paymentStatus === 'success') {
+      setShowSuccessModal(true);
+    }
+  }, [searchParams]);
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    
+    // Clean up all URL parameters when modal closes
+    const params = new URLSearchParams(searchParams.toString());
+    // Remove all payment-related parameters
+    params.delete('donationId');
+    params.delete('payment_status');
+    
+    // Clean URL - if no search params left, use pathname only
+    const cleanUrl = params.toString() 
+      ? `${pathname}?${params.toString()}` 
+      : pathname;
+    
+    router.replace(cleanUrl, { scroll: false });
+  };
 
   return (
     <main className="flex flex-col items-center justify-center w-full">
+      {showSuccessModal && (
+        <PaymentSuccessModal onClose={handleCloseSuccessModal} />
+      )}
       <HeroController treeCount={treeCount} setTreeCount={setTreeCount} />
       <section className="relative w-full overflow-hidden h-[200px] sm:h-[250px] md:h-[350px] lg:h-[450px] xl:h-[500px] -mt-4 sm:-mt-8 md:-mt-12 lg:-mt-16 xl:-mt-[120px]">
         <div className="absolute inset-0 w-full h-full lg:scale-90 xl:scale-100 origin-center flex items-end justify-center">
