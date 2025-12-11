@@ -67,7 +67,7 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
         return;
       }
       
-      if (isNaN(amountNum) || amountNum < 120000 || amountNum > 100000000) {
+      if (isNaN(amountNum) || amountNum < 500 || amountNum > 100000000) {
         setError(t('amountError'));
         setLoading(false);
         return;
@@ -149,7 +149,7 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              min={120000}
+              min={500}
               max={100000000}
               step={1}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#08743E] focus:border-transparent"
