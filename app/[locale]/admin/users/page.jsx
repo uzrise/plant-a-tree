@@ -110,7 +110,7 @@ export default function AdminUsersPage() {
               <p className="mt-1 text-gray-900">{selectedUser.name || '-'}</p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">{t('admin.users.surname')}</label>
+              <label className="block text-sm font-medium text-gray-700">{t('users.surname')}</label>
               <p className="mt-1 text-gray-900">{selectedUser.surname || '-'}</p>
             </div>
             <div>
