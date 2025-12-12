@@ -50,22 +50,22 @@
     "email": {
       "label": "Email",
       "description": "Bizning do'stona jamoamiz yordamga tayyor.",
-      "value": "hi@plantatreeten.com"
+      "value": "yashilhamkor@gmail.com"
     },
     "team": {
       "label": "Bizning jamoa",
       "description": "Bizning do'stona jamoamiz yordamga tayyor.",
-      "value": "Plantatree Nonprofit Ltd."
+      "value": "ООО «LIVE MEDIA TEAM»"
     },
     "office": {
       "label": "Ofis",
       "description": "Ofisimizga salom aytib keling.",
-      "value": "Toshkent, O'zbekiston"
+      "value": "г. Ташкент, Юнусабадский район, Марказ 5 мавзеси, 56 ДОМ 3 КВ"
     },
     "phone": {
       "label": "Telefon",
       "description": "Dushanbadan jumagacha soat 8:00 dan 17:00 gacha.",
-      "value": "+1 (000) 000-00-00"
+      "value": "+998983609799"
     },
     "form": {
       "firstName": "Ism",

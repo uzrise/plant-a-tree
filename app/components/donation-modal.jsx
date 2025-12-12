@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { donationsAPI } from '../../lib/api';
 import { translateBackendError } from '../../lib/errorTranslations';
@@ -15,13 +15,25 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
   const [error, setError] = useState('');
   const [paymentUrl, setPaymentUrl] = useState(null);
 
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && !loading && !paymentUrl) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [loading, paymentUrl, onClose]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      // Ensure treeCount is a number
       const treeCountNum = Number(treeCount);
       const amountNum = Number(amount);
       
@@ -43,7 +55,6 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
         return;
       }
 
-      // Create donation and get Payme Check form URL
       const response = await donationsAPI.create({
         amount: amountNum,
         treeCount: treeCountNum,
@@ -51,7 +62,6 @@ export default function DonationModal({ treeCount, onClose, onSuccess }) {
       });
 
       if (response.data.paymentUrl) {
-        // Redirect to Payme Check form (payment page)
         window.location.href = response.data.paymentUrl;
       } else {
         throw new Error('Payment URL not received');

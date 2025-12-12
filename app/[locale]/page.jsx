@@ -23,7 +23,6 @@ export default function Home() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if returning from successful payment
     const donationId = searchParams?.get('donationId');
     const paymentStatus = searchParams?.get('payment_status');
     
@@ -35,13 +34,10 @@ export default function Home() {
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);
     
-    // Clean up all URL parameters when modal closes
     const params = new URLSearchParams(searchParams.toString());
-    // Remove all payment-related parameters
     params.delete('donationId');
     params.delete('payment_status');
     
-    // Clean URL - if no search params left, use pathname only
     const cleanUrl = params.toString() 
       ? `${pathname}?${params.toString()}` 
       : pathname;

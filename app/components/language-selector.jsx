@@ -15,21 +15,17 @@ export default function LanguageSelector() {
   ];
 
   const switchLanguage = (newLocale) => {
-    // Remove the current locale from pathname
     const locales = ["uz", "ru", "en"];
     const pathSegments = pathname.split("/").filter(Boolean);
     
-    // Remove locale if it exists
     if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
       pathSegments.shift();
     }
     
-    // Reconstruct path without locale
     const pathWithoutLocale = pathSegments.length > 0 
       ? "/" + pathSegments.join("/") 
       : "";
     
-    // Navigate to new locale with the same path
     const newPath = `/${newLocale}${pathWithoutLocale}`;
     router.push(newPath);
     router.refresh();

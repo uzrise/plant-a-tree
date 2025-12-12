@@ -10,20 +10,16 @@ const axiosInstance = axios.create({
   },
 });
 
-// Request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Get current locale from URL path (Next.js locale routing)
     if (typeof window !== 'undefined') {
       const pathname = window.location.pathname;
-      // Extract locale from pathname (e.g., /uz/auth/register -> uz)
       const pathSegments = pathname.split('/').filter(Boolean);
       const locale = pathSegments[0] || 
                      document.documentElement.lang || 
                      localStorage.getItem('locale') || 
                      'uz';
       
-      // Set Accept-Language header based on locale
       const languageMap = {
         'uz': 'uz',
         'en': 'en',
@@ -41,7 +37,6 @@ axiosInstance.interceptors.request.use(
   },
 );
 
-// Response interceptor for token refresh
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -49,7 +44,6 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Log server errors for debugging
     if (error.response?.status >= 500) {
       console.error('Internal Server Error:', {
         url: originalRequest?.url,
@@ -59,7 +53,6 @@ axiosInstance.interceptors.response.use(
       });
     }
 
-    // Skip interceptor for auth endpoints to prevent infinite loops
     const authEndpoints = ['/auth/login', '/auth/register', '/auth/refresh', '/auth/send-otp', '/auth/verify-otp'];
     const isAuthEndpoint = authEndpoints.some(endpoint => originalRequest?.url?.includes(endpoint));
 
@@ -70,7 +63,6 @@ axiosInstance.interceptors.response.use(
         await axiosInstance.post('/auth/refresh');
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        // Refresh failed, redirect to login
         originalRequest._retry = false;
         if (typeof window !== 'undefined') {
           window.location.href = '/auth/login';

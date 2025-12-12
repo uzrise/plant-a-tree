@@ -74,7 +74,7 @@ function ContactUs() {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
       <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
         {t("title")}
       </h1>
@@ -103,7 +103,7 @@ function ContactUs() {
                 {t("email.description")}
               </p>
               <a
-                href="mailto:hi@plantatreeten.com"
+                href="mailto:yashilhamkor@gmail.com"
                 className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-all"
               >
                 {t("email.value")}
@@ -132,7 +132,6 @@ function ContactUs() {
                 {t("team.description")}
               </p>
               <a
-                // href="mailto:hi@plantatreeten.com"
                 className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-words"
               >
                 {t("team.value")}
@@ -161,7 +160,6 @@ function ContactUs() {
                 {t("office.description")}
               </p>
               <a
-                // href="mailto:hi@plantatreeten.com"
                 className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold break-words"
               >
                 {t("office.value")}
@@ -188,7 +186,7 @@ function ContactUs() {
                 {t("phone.description")}
               </p>
               <a
-                href="tel:+1(000)000-00-00"
+                href="tel:+998983609799"
                 className="mt-3 sm:mt-4 text-[#37A16C] inline-block text-xs sm:text-sm font-semibold"
               >
                 {t("phone.value")}
@@ -256,9 +254,7 @@ function ContactUs() {
               >
                 <rect width="56" height="56" rx="28" fill="#37A16C" />
                 <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M38 28C38 33.5228 33.5229 38 28 38C26.4724 38 25.0248 37.6575 23.7298 37.045L19.3745 37.7709C18.6995 37.8834 18.1135 37.3 18.223 36.6245L18.9356 32.229C18.3353 30.9446 18 29.5114 18 28C18 22.4772 22.4772 18 28 18C33.5229 18 38 22.4772 38 28ZM32 30.6749V31.1111C32 31.602 31.602 32 31.1111 32C27.1838 32 24 28.8162 24 24.8889C24 24.398 24.398 24 24.8889 24H25.3251C25.8669 24 26.3542 24.3299 26.5554 24.833L26.742 25.2995C26.9506 25.821 26.7247 26.4155 26.2222 26.6667C26.2222 26.6667 26.4444 27.7778 27.3333 28.6667C28.2222 29.5556 29.3333 29.7778 29.3333 29.7778C29.5845 29.2753 30.1789 29.0494 30.7005 29.258L31.167 29.4446C31.6701 29.6458 32 30.1331 32 30.6749Z"
+                  d="M28 18C22.4772 18 18 22.4772 18 28C18 32.9706 21.7893 37.1047 26.625 37.875V28.625H24.125V25.375H26.625V22.875C26.625 19.9375 28.3125 18.375 30.9375 18.375C32.1875 18.375 33.5 18.625 33.5 18.625V21.375H32.0625C30.625 21.375 30.125 22.125 30.125 22.9375V25.375H33.375L32.875 28.625H30.125V37.875C34.9607 37.1047 38.75 32.9706 38.75 28C38.75 22.4772 34.2728 18 28.75 18H28Z"
                   fill="white"
                 />
               </svg>

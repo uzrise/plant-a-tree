@@ -50,7 +50,7 @@ export default function Contributors() {
   const maxAmount = getMaxAmount();
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8 bg-white">
+    <section id="plant-partners" className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8 bg-white">
       <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
         {t("title")}
       </h1>

@@ -1,11 +1,15 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useState } from "react";
+import DonationModal from "../donation-modal";
 
 function Mission() {
   const t = useTranslations("mission");
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <section className=" bg-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
+    <section id="project" className=" bg-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[96px] w-full px-4 sm:px-6 md:px-8">
       <div className="max-w-full sm:max-w-[640px] md:max-w-[720px] lg:max-w-[768px] mx-auto space-y-4 sm:space-y-5">
         <h1 className="text-[#202225] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           {t("title")}
@@ -22,7 +26,10 @@ function Mission() {
           <p className="font-medium text-sm sm:text-base mt-auto mb-6 sm:mb-8">
             {t("personalPlanting.description")}
           </p>
-          <button className="font-semibold text-xs sm:text-sm rounded-[48px] w-fit p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] border border-white border-solid">
+          <button 
+            onClick={() => setShowModal(true)}
+            className="font-semibold text-xs sm:text-sm rounded-[48px] w-fit p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] border border-white border-solid"
+          >
             {t("personalPlanting.button")}
           </button>
         </div>
@@ -33,11 +40,21 @@ function Mission() {
           <p className="font-medium text-sm sm:text-base mt-auto mb-6 sm:mb-8">
             {t("corporatePlanting.description")}
           </p>
-          <button className="font-semibold text-xs sm:text-sm rounded-[48px] w-fit p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] border border-white border-solid">
+          <button 
+            onClick={() => setShowModal(true)}
+            className="font-semibold text-xs sm:text-sm rounded-[48px] w-fit p-2 sm:p-[10px_20px_10px_20px] md:p-[12px_24px_12px_24px] border border-white border-solid"
+          >
             {t("corporatePlanting.button")}
           </button>
         </div>
       </div>
+      {showModal && (
+        <DonationModal
+          treeCount={1}
+          onClose={() => setShowModal(false)}
+          onSuccess={() => setShowModal(false)}
+        />
+      )}
     </section>
   );
 }

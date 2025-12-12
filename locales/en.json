@@ -50,22 +50,22 @@
     "email": {
       "label": "Email",
       "description": "Our friendly team is here to help.",
-      "value": "hi@plantatreeten.com"
+      "value": "yashilhamkor@gmail.com"
     },
     "team": {
       "label": "Our team",
       "description": "Our friendly team is here to help.",
-      "value": "Plantatree Nonprofit Ltd."
+      "value": "ООО «LIVE MEDIA TEAM»"
     },
     "office": {
       "label": "Office",
       "description": "Come say hello at our office HQ.",
-      "value": "Tashkent, Uzbekistan"
+      "value": "г. Ташкент, Юнусабадский район, Марказ 5 мавзеси, 56 ДОМ 3 КВ"
     },
     "phone": {
       "label": "Phone",
       "description": "Mon-Fri from 8am to 5pm.",
-      "value": "+1 (000) 000-00-00"
+      "value": "+998983609799"
     },
     "form": {
       "firstName": "First name",

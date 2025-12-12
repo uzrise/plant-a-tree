@@ -51,14 +51,13 @@ export default function HeroController({ treeCount, setTreeCount }) {
       return;
     }
 
-    // Show donation modal
     setShowModal(true);
   };
 
   return (
     <div className="flex flex-col items-center justify-center w-full mt-4 sm:mt-6 px-4 sm:px-6 md:px-8">
       <Image
-        src={"/logo.png"}
+        src={"/logo_text.png"}
         width={412}
         height={90}
         alt="logo"
@@ -90,7 +89,6 @@ export default function HeroController({ treeCount, setTreeCount }) {
               }}
             />
 
-            {/* Tick Marks */}
             <div className="absolute top-1/2 left-[19px] w-[calc(100%-38px)] h-0 -mt-[3px] flex justify-between items-center transform -translate-y-[72%] z-0">
               {[...Array(10)].map((_, index) => (
                 <div key={index} className="relative w-[2px] h-[12px]">
